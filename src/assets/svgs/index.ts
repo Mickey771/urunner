@@ -7,6 +7,9 @@ import Appstore from "./Appstore.svg";
 import Banner from "./Banner.svg";
 import Username from "./Username.svg";
 import URunner from "./URunner.svg";
+import Globe from "./Globe.svg";
+import Sol from "./Sol.svg";
+import Darts from "./Darts.svg";
 
 export {
   BlackCurve,
@@ -18,4 +21,7 @@ export {
   Eclipsesmall,
   Username,
   URunner,
+  Globe,
+  Sol,
+  Darts,
 };

@@ -3,6 +3,7 @@ import { URunner } from "@/assets/svgs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
+import { BiSearch } from "react-icons/bi";
 
 const navLinks = [
   {
@@ -48,6 +49,9 @@ const Navbar = () => {
               {item.text}
             </Link>
           ))}
+          <span>
+            <BiSearch size={24} color="#000000B2" />
+          </span>
         </div>
         <button className="h-[67px] p-5 bg-[#007aff] rounded-[20px] justify-center items-center gap-2.5 inline-flex">
           <p className="text-white text-[22px] font-semibold font-['Inter']">
