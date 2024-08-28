@@ -10,6 +10,23 @@ import URunner from "./URunner.svg";
 import Globe from "./Globe.svg";
 import Sol from "./Sol.svg";
 import Darts from "./Darts.svg";
+import Garmin from "./Garmin.svg";
+import Fitbit from "./Fitbit.svg";
+import Strava from "./Strava.svg";
+import Oura from "./Oura.svg";
+import Bentman from "./Bentman.svg";
+import Quotesopen from "./Quotesopen.svg";
+import Quotesclose from "./Quotesclose.svg";
+import Quotesgrey from "./Quotesgrey.svg";
+import Playstoresmall from "./Playstoresmall.svg";
+import Appstoresmall from "./Appstoresmall.svg";
+import Bluecurvesmall from "./Bluecurvesmall.svg";
+import Whitecurvesmall from "./Whitecurvesmall.svg";
+import Mail from "./Mail.svg";
+import Fb from "./Fb.svg";
+import Tw from "./Tw.svg";
+import In from "./Ig.svg";
+import Ln from "./Ln.svg";
 
 export {
   BlackCurve,
@@ -24,4 +41,21 @@ export {
   Globe,
   Sol,
   Darts,
+  Garmin,
+  Fitbit,
+  Strava,
+  Oura,
+  Bentman,
+  Quotesopen,
+  Quotesclose,
+  Quotesgrey,
+  Playstoresmall,
+  Appstoresmall,
+  Bluecurvesmall,
+  Whitecurvesmall,
+  Mail,
+  Fb,
+  Tw,
+  In,
+  Ln,
 };
