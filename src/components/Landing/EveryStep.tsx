@@ -14,7 +14,7 @@ const EveryStep = () => {
         </h2>
         <div className="max-w-[636px]">
           <span className="text-[#202020]/70 text-2xl font-medium font-['Urbanist'] leading-loose">
-            With years of unrealized health benefits, URunner is the world's
+            With years of unrealized health benefits, URunner is the {"world's"}
             first App to empower your fitness and health goals with real
             rewards. Leveraging the technology of the{" "}
           </span>
@@ -49,9 +49,7 @@ const EveryStep = () => {
           <span className="text-[#202020] text-2xl font-extrabold font-['Urbanist'] leading-loose">
             Earn
           </span>
-          <span className="text-[#202020]/70 text-2xl font-extrabold font-['Urbanist'] leading-loose">
-            {" "}
-          </span>
+          <span className="text-[#202020]/70 text-2xl font-extrabold font-['Urbanist'] leading-loose"></span>
         </div>
       </div>
       <span>
