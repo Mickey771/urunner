@@ -15,8 +15,11 @@ const SectionFour = () => {
       </p>
 
       <div className="flex items-center gap-[38px] mt-[52px]">
-        {Array.from({ length: 3 }, () => (
-          <div className="flex flex-col rounded-[6px] shadow-[7px_10px_40px_0px_rgba(0,0,0,0.10)] p-[15px]">
+        {Array.from({ length: 3 }, (_, index) => (
+          <div
+            key={index}
+            className="flex flex-col rounded-[6px] shadow-[7px_10px_40px_0px_rgba(0,0,0,0.10)] p-[15px]"
+          >
             <Image src={"/adults.png"} width={314} height={173} alt="adult" />
             <h3 className="text-[#202224] text-[28px] font-bold font-['Urbanist'] mt-[19px] mb-[15px]">
               Design Conference
