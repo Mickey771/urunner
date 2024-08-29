@@ -121,8 +121,8 @@ const page = () => {
             Registered Attendees
           </h3>
           <div className="flex items-center gap-3 mt-[14px]">
-            {Array.from({ length: 6 }, () => (
-              <div>
+            {Array.from({ length: 6 }, (_, index) => (
+              <div key={index}>
                 <Image
                   src={"/man3.png"}
                   alt="profile"

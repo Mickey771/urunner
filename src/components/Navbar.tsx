@@ -27,8 +27,6 @@ const navLinks = [
 const Navbar = () => {
   const path = usePathname();
 
-  console.log(path);
-
   return (
     <nav className="w-full sticky top-3 z-[999] ">
       <div className="bg-white py-4 px-4 flex justify-between items-center rounded-[12px] w-full max-w-max mx-auto shadow-[0px_4px_15px_0px_rgba(0,0,0,0.15)]">
