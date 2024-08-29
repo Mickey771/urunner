@@ -15,8 +15,8 @@ const navLinks = [
     text: "Privacy Policy",
   },
   {
-    path: "/faq",
-    text: "FAQ",
+    path: "/events",
+    text: "Events",
   },
   {
     path: "/contact-us",

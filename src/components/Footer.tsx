@@ -64,9 +64,12 @@ const Footer = () => {
             <p className="text-[#8c8484] text-sm font-medium font-['Inter'] leading-tight">
               Contact Us
             </p>
-            <p className="text-[#007aff] text-sm font-medium font-['Inter'] leading-tight">
-              urunner@gmail.com
-            </p>
+            <a
+              href="mailto:info@urunner.io"
+              className="text-[#007aff] text-sm font-medium font-['Inter'] leading-tight"
+            >
+              info@urunner.io
+            </a>
           </div>
           <span>
             <URunner />
