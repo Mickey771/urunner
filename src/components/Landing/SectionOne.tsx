@@ -20,14 +20,14 @@ const SectionOne = () => {
         <div className="absolute top-0 left-20">
           <Eclipse />
         </div>
-        <h1 className="text-[#202020] text-[64px] font-black font-['Urbanist'] leading-[86.25px]">
+        <h1 className="relative z-[11] text-[#202020] text-[64px] font-black font-['Urbanist'] leading-[86.25px]">
           Kickstarting healthy
           <br />
           lifestyle by tokenizing
           <br />
           global fitness.
         </h1>
-        <p className="text-[#202020]/70 text-2xl  mt-[18px] font-semibold font-['Urbanist'] leading-[32.342px]">
+        <p className="relative z-[11] text-[#202020]/70 text-2xl  mt-[18px] font-semibold font-['Urbanist'] leading-[32.342px]">
           Lets walk, step, run and earn together
         </p>
         <div className="flex items-center gap-6 mt-[52px]">
@@ -62,7 +62,7 @@ const SectionOne = () => {
             <Banner />
           </div>
           <div className="relative inline-flex h-[553px] w-[553px] bg-primaryBlue rounded-[44px]">
-            <div className="absolute z-[3] top-[15px] left-[-169px] w-[333px] h-[96px] bg-[rgba(0,0,0,0.10)] backdrop-blur-[42.5px] rounded-[30px] flex items-center gap-[26px] py-5 px-[22px]">
+            {/* <div className="absolute z-[3] top-[15px] left-[-169px] w-[333px] h-[96px] bg-[rgba(0,0,0,0.10)] backdrop-blur-[42.5px] rounded-[30px] flex items-center gap-[26px] py-5 px-[22px]">
               <Image src={"/person.png"} width={56} height={56} alt="person" />
               <Username />
               <span className="w-[17px] h-[0px] origin-top-left rotate-90 border border-white inline-flex"></span>
@@ -74,7 +74,7 @@ const SectionOne = () => {
                   <LuMoveRight color="white" size={22} />
                 </span>
               </span>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="w-[669px] flex items-center bg-[#212020] h-[134px] absolute bottom-0 right-0 rounded-[30px] py-5 px-[25px]">

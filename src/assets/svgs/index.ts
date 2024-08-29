@@ -27,6 +27,7 @@ import Fb from "./Fb.svg";
 import Tw from "./Tw.svg";
 import In from "./Ig.svg";
 import Ln from "./Ln.svg";
+import Code from "./Code.svg";
 
 export {
   BlackCurve,
@@ -58,4 +59,5 @@ export {
   Tw,
   In,
   Ln,
+  Code,
 };
