@@ -6,46 +6,54 @@ import {
   Eclipse,
   Eclipsesmall,
   Playstore,
-  Username,
 } from "@/assets/svgs";
 import React from "react";
 import StoreFlag from "./StoreFlag";
-import Image from "next/image";
 import { LuMoveRight } from "react-icons/lu";
+import Link from "next/link";
 
 const SectionOne = () => {
   return (
-    <section className="w-full max-w-max mx-auto flex gap-[30px] pt-4">
-      <div className="relative z-10 mt-[54px]">
+    <section className="w-full overflow-x-hidden max-w-max mx-auto lg:px-0 px-6 flex gap-[30px] pt-4">
+      <div className="w-full relative  z-10 mt-[54px]">
         <div className="absolute top-0 left-20">
           <Eclipse />
         </div>
-        <h1 className="relative z-[11] text-[#202020] text-[64px] font-black font-['Urbanist'] leading-[86.25px]">
-          Kickstarting healthy
-          <br />
-          lifestyle by tokenizing
-          <br />
-          global fitness.
+        <h1 className="w-full max-w-[500px] lg:max-w-[642px] relative z-[11] text-[#202020] text-[32px] mb:text-[45px] md:text-[58px] lg:text-[64px] font-black font-['Urbanist'] leading-[53px] md:leading-[70px] lg:leading-[86.25px]">
+          Kickstarting healthy lifestyle by tokenizing global fitness.
         </h1>
-        <p className="relative z-[11] text-[#202020]/70 text-2xl  mt-[18px] font-semibold font-['Urbanist'] leading-[32.342px]">
+        <p className="relative z-[11] text-[#202020]/70 text-xl md:text-2xl  mt-[18px] font-semibold font-['Urbanist'] leading-[32.342px]">
           Lets walk, step, run and earn together
         </p>
-        <div className="flex items-center gap-6 mt-[52px]">
-          <StoreFlag icon={Playstore} bg={Bluecurve} text="Playstore" />
-          <StoreFlag icon={Appstore} bg={BlackCurve} text="Appstore" />
+        <div className="flex items-center w-full gap-3 md:gap-6 mt-[52px] ">
+          <a
+            target="_blank"
+            href="https://play.google.com/store/apps/details?id=com.app.urunner"
+            className="cursor-pointer"
+          >
+            <StoreFlag icon={"playstore"} bg={"blueCurve"} text="Playstore" />
+          </a>
+          <a
+            target="_blank"
+            href="https://apps.apple.com/us/app/urunner/id1617568183"
+            className="cursor-pointer"
+          >
+            <StoreFlag icon={"appstore"} bg={"blackCurve"} text="Appstore" />
+          </a>
         </div>
         <div
           style={{
             backgroundImage: "url(/shoes.png)",
             backgroundRepeat: "no-repeat",
+            // backgroundSize: "contain",
           }}
-          className="mt-[64px] relative z-10 pt-[60px] pl-[56px] h-[342px]"
+          className="mt-[64px] w-full max-w-[358px] md:max-w-[500px] lg:max-w-[702px]   relative z-10 pt-[25px] lg:pt-[60px] pl-[23px] rounded-[40px] lg:rounded-none lg:pl-[56px] h-[255px] lg:h-[342px]"
         >
-          <h2 className="text-white text-[40px] font-extrabold font-['Urbanist'] leading-[53.90px]">
+          <h2 className="text-white text-[24px] lg:text-[40px] font-extrabold font-['Urbanist'] lg:leading-[53.90px]">
             Multiple healthy Routines
           </h2>
-          <span className="inline-flex w-[500px] h-[0px] border border-white/60 mt-[22px] mb-6"></span>
-          <p className="w-[464px] text-white text-2xl font-semibold font-['Urbanist'] leading-[32.342px]">
+          <span className="inline-flex w-full max-w-[309px] lg:max-w-[500px] h-[0px] border border-white/60 mt-[16px] lg:mt-[22px] mb-4 lg:mb-6"></span>
+          <p className="w-full max-w-[310px] lg:max-w-[464px] text-white text-base lg:text-2xl font-semibold font-['Urbanist'] lg:leading-[32.342px]">
             Explore our diverse range of Running Routines, from high-intensity
             interval running to walking sessions, all tailored to burn your
             calories.
@@ -53,7 +61,7 @@ const SectionOne = () => {
         </div>
       </div>
 
-      <div className="w-full  relative">
+      <div className="w-full lg:flex zr:hidden relative">
         <div className="absolute top-0 right-[-0px] rotate-0 translate-y-[-55%]">
           <Eclipsesmall />
         </div>
