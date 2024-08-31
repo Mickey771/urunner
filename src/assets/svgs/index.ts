@@ -28,6 +28,8 @@ import Tw from "./Tw.svg";
 import In from "./Ig.svg";
 import Ln from "./Ln.svg";
 import Code from "./Code.svg";
+import Arrowup from "./Arrowup.svg";
+import Arrowdown from "./Arrowdown.svg";
 
 export {
   BlackCurve,
@@ -60,4 +62,6 @@ export {
   In,
   Ln,
   Code,
+  Arrowup,
+  Arrowdown,
 };

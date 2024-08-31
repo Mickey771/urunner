@@ -14,7 +14,7 @@ const SectionFour = () => {
         We have amazing events upcoming for your taste and progress.
       </p>
 
-      <div className="flex lg:justify-center items-center gap-[15px] md:gap-[38px] mt-[20px] lg:mt-[52px] w-full px-6 lg:px-0 py-8 lg:py-0 overflow-x-scroll">
+      <div className="flex lg:justify-center items-center gap-[15px] md:gap-[38px] mt-[20px] lg:mt-[52px] w-full px-6 lg:px-0 py-8  overflow-x-scroll">
         {Array.from({ length: 3 }, (_, index) => (
           <div
             key={index}

@@ -20,8 +20,8 @@ const navLinks = [
     text: "Events",
   },
   {
-    path: "/contact-us",
-    text: "Contact Us",
+    path: "/faq",
+    text: "FAQs",
   },
 ];
 
@@ -56,9 +56,9 @@ const Navbar = () => {
               {item.text}
             </Link>
           ))}
-          <span className="zr:hidden md:flex">
+          {/* <span className="zr:hidden md:flex">
             <BiSearch size={24} color="#000000B2" />
-          </span>
+          </span> */}
         </div>
         <div className="flex items-center gap-2">
           <button className="h-[40px] zr:hidden mb:flex  md:h-[55px] lg:h-[67px] p-3 md:p-5 bg-[#007aff] rounded-[10px] md:rounded-[16px] lg:rounded-[20px] justify-center items-center gap-2.5 inline-flex">
