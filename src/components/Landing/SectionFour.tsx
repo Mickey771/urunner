@@ -1,7 +1,7 @@
-import { Bentman, Quotesclose, Quotesopen } from "@/assets/svgs";
+import { upcomingEvents } from "@/utils/data";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
-import { FaAngleRight } from "react-icons/fa";
 import { HiOutlineChevronRight } from "react-icons/hi";
 
 const SectionFour = () => {
@@ -11,27 +11,35 @@ const SectionFour = () => {
         Our Events
       </h1>
       <p className="px-6 lg:px-0 lg:w-[710px] mt-[15px] text-center text-[#202020]/80 text-base md:text-xl lg:text-2xl font-semibold font-['Urbanist'] lg:leading-loose">
-        We have amazing events upcoming for your taste and progress.
+        Come join us at our next event
       </p>
 
       <div className="flex lg:justify-center items-center gap-[15px] md:gap-[38px] mt-[20px] lg:mt-[52px] w-full px-6 lg:px-0 py-8  overflow-x-scroll">
-        {Array.from({ length: 3 }, (_, index) => (
-          <div
+        {upcomingEvents.map((item, index) => (
+          <Link
+            href={`/events/${item.id}`}
             key={index}
             className="flex flex-col w-full min-w-[266px] max-w-[344px] rounded-[6px] shadow-[7px_10px_40px_0px_rgba(0,0,0,0.10)] p-[15px]"
           >
-            <Image src={"/adults.png"} width={314} height={173} alt="adult" />
+            <Image
+              src={`/${item.image}`}
+              width={314}
+              height={173}
+              alt="adult"
+              className="max-h-[173px] object-cover"
+            />
             <h3 className="text-[#202224] text-[18px] md:text-[22px] lg:text-[28px] font-bold font-['Urbanist'] mt-[19px] mb-[15px]">
-              Design Conference
+              {item.heading.slice(0, 20)}
+              {item.heading.length > 20 && "..."}
             </h3>
             <p className="text-[#646464] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist']">
-              Zillul Design Agency
+              {item.company}
             </p>
             <p className="text-[#909090] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] my-2">
-              Today 07:19 AM
+              {item.time}
             </p>
             <p className="text-[#969696] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] leading-[18px]">
-              tyruj hdtgfj jhfjkg ..........
+              {item.description.slice(0, 60)}...
             </p>
 
             <div className="mt-[20px] lg:mt-[46px] flex justify-between items-center">
@@ -80,7 +88,7 @@ const SectionFour = () => {
                 <HiOutlineChevronRight size={25} />
               </span>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
