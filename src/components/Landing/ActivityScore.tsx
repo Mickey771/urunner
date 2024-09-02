@@ -12,17 +12,18 @@ const ActivityScore = () => {
           </span>
         </h2>
         <div>
-          <span className="text-[#212020]/70 text-base md:text-xl lg:text-2xl font-medium font-['Urbanist'] leading-loose">
+          <span className="text-[#212020]/70 text-base md:text-[20px] lg:text-[24px] font-medium font-['Urbanist'] leading-relaxed md:leading-loose">
             The Activity Score is an objective index of your daily activity
             based on movement and energy burned. It takes your steps and
             calories and creates the Activity score which can be used to set
             fitness goals and tracked. The URunner App will give you the 7 day
-            average Activity Score to show the trend for the past 7 days.   
+            average Activity Score to show the trend for the past 7 days.
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
-            Keep a great score!!! 
+          <br />
+          <span className="text-[#202020] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed md:leading-loose">
+            What’s your Activity Score?
           </span>
-          <span className="text-[#202020]/80 text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020]/80 text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed md:leading-loose">
             {" "}
           </span>
         </div>

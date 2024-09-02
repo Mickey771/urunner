@@ -14,44 +14,44 @@ const EveryStep = () => {
           <span className="text-[#202020] "> counts</span>
         </h2>
         <div className="max-w-[636px]">
-          <span className="text-[#202020]/70 text-base md:text-xl lg:text-2xl font-medium font-['Urbanist'] leading-loose">
+          <span className="text-[#202020]/70 text-base md:text-[20px] lg:text-[24px] font-medium font-['Urbanist'] leading-relaxed lg:leading-loose">
             With years of unrealized health benefits, URunner is the{" "}
             {"world's "}
             first App to empower your fitness and health goals with real
             rewards. Leveraging the technology of the{" "}
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             Solana Blockchain
           </span>
-          <span className="text-[#202020]/70 text-base md:text-xl lg:text-2xl font-medium font-['Urbanist'] leading-loose">
+          <span className="text-[#202020]/70 text-base md:text-[20px] lg:text-[24px] font-medium font-['Urbanist'] leading-relaxed lg:leading-loose">
             , the URunner coin, named{" "}
           </span>
-          <span className="text-[#007aff] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#007aff] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             URN
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             Coin
           </span>
-          <span className="text-[#202020]/70 text-base md:text-xl lg:text-2xl font-medium font-['Urbanist'] leading-loose">
+          <span className="text-[#202020]/70 text-base md:text-[20px] lg:text-[24px] font-medium font-['Urbanist'] leading-relaxed lg:leading-loose">
             , will tokenize global fitness and health to promote a global
             approach to incentivizing your daily activities. <br />
           </span>
-          <span className="text-[#007aff] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#007aff] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             U
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             Burn
           </span>
-          <span className="text-[#202020]/70 text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020]/70 text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             {" "}
           </span>
-          <span className="text-[#007aff] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#007aff] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             U
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose">
             Earn
           </span>
-          <span className="text-[#202020]/70 text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose"></span>
+          <span className="text-[#202020]/70 text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed lg:leading-loose"></span>
         </div>
       </div>
       <span className="inline-flex w-full max-w-[623px]">

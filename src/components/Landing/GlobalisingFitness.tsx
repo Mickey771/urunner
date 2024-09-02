@@ -18,12 +18,12 @@ const GlobalisingFitness = () => {
       <div>
         <h2 className="absolute top-0 left-0 md:relative w-full text-center lg:text-left md:leading-[53.90px] text-[24px] md:text-[32px] lg:text-[40px] font-extrabold font-['Urbanist']  ">
           <span className="text-white bg-primaryBlue rounded-[5px] py-1">
-            Globalising
+            Globalizing
           </span>
           <span className="text-[#202020] "> fitness together</span>
         </h2>
         <div className="mt-5 md:mt-10 max-w-[636px]">
-          <span className="text-[#212020b2] text-base md:text-xl lg:text-2xl font-medium font-['Urbanist'] md:leading-loose">
+          <span className="text-[#212020b2] text-base md:text-xl lg:text-[24px] font-medium font-['Urbanist']  leading-relaxed md:leading-loose">
             Our goal is to promote fitness and health by incentivizing
             <br />
             your daily activities on the Solana Blockchain. We simply
@@ -33,29 +33,29 @@ const GlobalisingFitness = () => {
             health by tokenizing and rewarding your daily steps and calories.{" "}
             <br />
           </span>
-          <span className="text-[#007aff] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#007aff] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             U
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             Step
           </span>
-          <span className="text-[#212020b2] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#212020b2] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             {" "}
           </span>
-          <span className="text-[#007aff] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#007aff] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             U
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             Run
           </span>
-          <span className="text-[#007aff] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#007aff] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             {" "}
             U
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             Earn
           </span>
-          <span className="text-[#202020]/70 text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020]/70 text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             {" "}
           </span>
         </div>

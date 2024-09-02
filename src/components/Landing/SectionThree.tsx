@@ -7,7 +7,7 @@ const SectionThree = () => {
   return (
     <section className="w-full max-w-max mx-auto mt-[111px] flex flex-col justify-center items-center px-6 lg:px-0">
       <h1 className="text-[#202020] text-center text-[32px] md:text-[52px] lg:text-[64px] font-black font-['Urbanist'] lg:leading-[86.25px]">
-        Our Partners
+        Connect to URunner
       </h1>
       <p className="w-full max-w-[710px] mt-[15px] text-center text-[#202020]/80 text-base md:text-xl lg:text-2xl font-semibold font-['Urbanist'] lg:leading-loose">
         We are in collaboration with other notable companies and brands

@@ -58,9 +58,6 @@ const Navbar = () => {
               {item.text}
             </Link>
           ))}
-          {/* <span className="zr:hidden md:flex">
-            <BiSearch size={24} color="#000000B2" />
-          </span> */}
         </div>
         <div className="flex items-center gap-2">
           <button

@@ -23,17 +23,17 @@ const YourSuccess = () => {
           <span className="text-[#202020] "> is our goal</span>
         </h2>
         <div>
-          <span className="text-[#212020]/70 text-base md:text-xl lg:text-2xl font-medium font-['Urbanist'] leading-loose">
+          <span className="text-[#212020]/70 text-base md:text-[20px] lg:text-[24px] font-medium font-['Urbanist'] leading-relaxed md:leading-loose">
             We understand that adapting new fitness habits is difficult and
             often times fails. Our goal is to change your view on fitness, so
             that it becomes a part of who you are and your lifestyle. We
             strongly believe that healthy habits lead to a healthy lifestyle.{" "}
             <br />
           </span>
-          <span className="text-[#202020] text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed md:leading-loose">
             We will work together!!!
           </span>
-          <span className="text-[#202020]/80 text-base md:text-xl lg:text-2xl font-extrabold font-['Urbanist'] leading-loose">
+          <span className="text-[#202020]/80 text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed md:leading-loose">
             {" "}
           </span>
         </div>
