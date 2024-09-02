@@ -1,5 +1,6 @@
 "use client";
 import { URunner } from "@/assets/svgs";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
@@ -27,6 +28,7 @@ const navLinks = [
 
 const Navbar = () => {
   const [isMenu, setIsMenu] = useState(false);
+  const [isButton, setIsButton] = useState(false);
 
   const path = usePathname();
 
@@ -61,10 +63,47 @@ const Navbar = () => {
           </span> */}
         </div>
         <div className="flex items-center gap-2">
-          <button className="h-[40px] zr:hidden mb:flex  md:h-[55px] lg:h-[67px] p-3 md:p-5 bg-[#007aff] rounded-[10px] md:rounded-[16px] lg:rounded-[20px] justify-center items-center gap-2.5 inline-flex">
+          <button
+            onMouseEnter={() => setIsButton(true)}
+            onMouseLeave={() => setIsButton(false)}
+            className="h-[40px] transition-all zr:hidden mb:flex md:h-[55px] lg:h-[67px] p-3 md:p-5 bg-[#007aff] rounded-[10px] md:rounded-[16px] lg:rounded-[20px] justify-center items-center gap-2.5 inline-flex"
+          >
             <p className="text-white w-max text-[14px] md:text-[18px] lg:text-[22px] font-semibold font-['Inter']">
               Download App
             </p>
+            <div
+              className={`items-center gap-2 ${isButton ? "flex" : "hidden"}`}
+            >
+              <span className="inline-flex h-full w-[1px] bg-white"></span>
+              <a
+                target="_blank"
+                href="https://play.google.com/store/apps/details?id=com.app.urunner"
+                className="inline-flex h-[15px] sm:h-[30px] md:h-[42px] lg:h-[55px] w-[15px] sm:w-[30px] md:w-[42px] lg:w-[55px]"
+              >
+                <Image
+                  src={`/playstore.svg`}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="store"
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://apps.apple.com/us/app/urunner/id1617568183"
+                className="inline-flex h-[15px] sm:h-[30px] md:h-[42px] lg:h-[55px] w-[15px] sm:w-[30px] md:w-[42px] lg:w-[55px]"
+              >
+                <Image
+                  src={`/appstore.svg`}
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  alt="store"
+                  style={{ width: "100%", height: "auto" }}
+                />
+              </a>
+            </div>
           </button>
           <span
             onClick={() => setIsMenu((prev) => !prev)}

@@ -31,14 +31,14 @@ const SectionOne = () => {
             href="https://play.google.com/store/apps/details?id=com.app.urunner"
             className="cursor-pointer"
           >
-            <StoreFlag icon={"playstore"} bg={"blueCurve"} text="Playstore" />
+            <StoreFlag icon={"playstore"} bg={"blueCurve"} text="Google Play" />
           </a>
           <a
             target="_blank"
             href="https://apps.apple.com/us/app/urunner/id1617568183"
             className="cursor-pointer"
           >
-            <StoreFlag icon={"appstore"} bg={"blackCurve"} text="Appstore" />
+            <StoreFlag icon={"appstore"} bg={"blackCurve"} text="App Store" />
           </a>
         </div>
         <div

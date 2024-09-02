@@ -12,6 +12,7 @@ import {
 } from "@/assets/svgs";
 import Link from "next/link";
 import React from "react";
+import { FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -119,18 +120,34 @@ const Footer = () => {
             Follow Us
           </p>
           <div className="flex gap-2">
-            <span>
+            <a
+              target="_blank"
+              href=" https://www.facebook.com/profile.php?id=61560962371672
+"
+            >
               <Fb />
-            </span>
-            <span>
+            </a>
+            <a
+              target="_blank"
+              href="https://x.com/urunnerapp?s=21
+"
+            >
               <Tw />
-            </span>
-            <span>
+            </a>
+            <a
+              target="_blank"
+              href="https://www.instagram.com/urunnerapp?igsh=OGQ5ZDc2ODk2ZA%3D%3D&utm_source=qr 
+"
+            >
               <In />
-            </span>
-            <span>
-              <Ln />
-            </span>
+            </a>
+            <a
+              target="_blank"
+              href=" https://youtube.com/@urunnerapp?si=d0WhOiTXyRj79p1J"
+              className="bg-primaryBlue p-1 rounded-full"
+            >
+              <FaYoutube color="white" size={16} />
+            </a>
           </div>
         </div>
 
