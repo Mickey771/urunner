@@ -24,14 +24,10 @@ const GlobalisingFitness = () => {
         </h2>
         <div className="mt-5 md:mt-10 max-w-[636px]">
           <span className="text-[#212020b2] text-base md:text-xl lg:text-[24px] font-medium font-['Urbanist']  leading-relaxed md:leading-loose">
-            Our goal is to promote fitness and health by incentivizing
-            <br />
-            your daily activities on the Solana Blockchain. We simply
-            <br />
-            connect to your fitness App and bring awareness of self
-            <br />
-            health by tokenizing and rewarding your daily steps and calories.{" "}
-            <br />
+            Our goal is to promote fitness and health by incentivizing your
+            daily activities on the Solana Blockchain. We simply connect to your
+            fitness App and bring awareness of self health by tokenizing and
+            rewarding your daily steps and calories.{" "}
           </span>
           <span className="text-[#007aff] text-base md:text-xl lg:text-[24px] font-extrabold font-['Urbanist']  leading-relaxed md:leading-loose">
             U

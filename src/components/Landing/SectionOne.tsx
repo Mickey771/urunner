@@ -15,7 +15,7 @@ import Image from "next/image";
 
 const SectionOne = () => {
   return (
-    <section className="w-full lg:flex-row flex-col h-fit  max-w-max mx-auto lg:px-0 px-6 flex gap-[30px] pt-4">
+    <section className="w-full lg:flex-row flex-col h-fit overflow-hidden max-w-max mx-auto lg:px-0 px-6 flex gap-[30px] pt-4">
       <div className="w-full relative   z-10 mt-[54px]">
         <div className="absolute top-0 left-20">
           <Eclipse />

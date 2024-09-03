@@ -25,6 +25,16 @@ const SectionThree = () => {
             />
           </span>
         ))}
+        <span className="pt-6  w-full max-w-[256px]">
+          <Image
+            src={`/kasports.png`}
+            width={0}
+            height={0}
+            alt="kasports"
+            sizes="100vw"
+            style={{ width: "100%", height: "100%" }}
+          />
+        </span>
       </div>
     </section>
   );

@@ -35,8 +35,8 @@ const Footer = () => {
             <span className="inline-flex h-full absolute top-0 w-fit left-0 justify-center items-center pl-[9px]">
               <Playstoresmall />
             </span>
-            <p className="text-white text-2xl font-bold font-['Urbanist'] eading-loose absolute top-0 right-0 h-full w-fit inline-flex items-center justify-center pr-[15px]">
-              Playstore
+            <p className="text-white text-xl font-bold font-['Urbanist'] eading-loose absolute top-0 right-0 h-full w-fit inline-flex items-center justify-center pr-[15px]">
+              Google Play
             </p>
           </a>
           <a
@@ -48,8 +48,8 @@ const Footer = () => {
             <span className="inline-flex h-full absolute top-0 w-fit left-0 justify-center items-center pl-[9px]">
               <Appstoresmall />
             </span>
-            <p className="text-[#212020] text-2xl font-bold font-['Urbanist'] eading-loose absolute top-0 right-0 h-full w-fit inline-flex items-center justify-center pr-[15px]">
-              Appstore
+            <p className="text-[#212020] text-xl font-bold font-['Urbanist'] eading-loose absolute top-0 right-0 h-full w-fit inline-flex items-center justify-center pr-[15px]">
+              App Store
             </p>
           </a>
         </div>
@@ -153,13 +153,19 @@ const Footer = () => {
 
         <div className="flex flex-wrap md:flex-nowrap items-center w-full max-w-[630px] justify-between gap-3">
           <div className="flex items-center gap-4">
-            <p className="text-[#504949] text-xs md:text-sm font-semibold font-['Inter'] leading-tight">
+            <Link
+              href={"/privacy-policy"}
+              className="text-[#504949] text-xs md:text-sm font-semibold font-['Inter'] leading-tight"
+            >
               Privacy Policy
-            </p>
+            </Link>
             <span className="inline-flex w-1.5 h-1.5 bg-[#e3dada] rounded-full" />
-            <p className="text-[#504949] text-xs md:text-sm font-semibold font-['Inter'] leading-tight">
-              Terms of Use
-            </p>
+            <Link
+              href={"/events"}
+              className="text-[#504949] text-xs md:text-sm font-semibold font-['Inter'] leading-tight"
+            >
+              Events
+            </Link>
           </div>
           <p className="w-[193px] lg:text-right text-[#504949] text-sm md:text-base font-normal font-['Inter'] leading-normal">
             © 2024 URunner Inc
