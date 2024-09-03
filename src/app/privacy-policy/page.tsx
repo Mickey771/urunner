@@ -179,8 +179,17 @@ const page = () => {
         <span className="text-[#202020]/80 text-base md:text-xl font-medium font-['Urbanist'] leading-[26.95px]">
           You can delete your account at any time through the account tab in the
           URunner App. Deleting the account removes all user data from the
-          URunner systems, You can also contact us to delete any user data.{" "}
-          <br />
+          URunner systems. You can also contact us at{" "}
+          <a
+            href="mailto:info@urunner.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primaryBlue"
+          >
+            info@urunner.io
+          </a>{" "}
+          to request either entire deletion of account or a specific data
+          component. <br />
           <br />
           Copyright @URunner {year} – All rights reserved.
         </span>
