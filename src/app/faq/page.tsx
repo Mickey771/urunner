@@ -15,29 +15,19 @@ interface AccordionItemProps extends AccordionItem {
 
 const accordionData = [
   {
-    title: "What is UX design?",
+    title: "How do I connect to URunner?",
     text:
-      "UX design stands for User Experience design. It is the process of designing digital or physical products that are easy to use, intuitive, and enjoyable for the user.",
+      "It's simple. Download the URunner App from the App store. Launch it and allow the permission to connect to your local fitness App. Health on Iphone or MyFitnessPal on Android.  Other fitness Apps coming soon.",
   },
   {
-    title: "What are the key principles of UX design?",
+    title: "How do I earn URNCoins?",
     text:
-      "The key principles of UX design include user-centered design, accessibility, usability, consistency, hierarchy, feedback, and simplicity. These principles guide designers in creating products that meet user needs and expectations.",
+      "URunner will connect to your fitness App and monitor the number of steps and calories for the day.  Using a complex fitness algorithm, URunner will determine your Activity Score and calculate the number of URNCoins, which will be transferred into your URunner wallet daily.",
   },
   {
-    title: "What is the difference between UX and UI design?",
+    title: "What is the URNCoin worth?",
     text:
-      "While UX (User Experience) design focuses on the overall feel of the product and how users interact with it, UI (User Interface) design is more concerned with the visual elements and layout of the product. UX design deals with the entire user journey, while UI design focuses on the look and feel of the interface.",
-  },
-  {
-    title: "What is a wireframe?",
-    text:
-      "A wireframe is a basic visual representation of a webpage or app's layout. It's a low-fidelity sketch that outlines the structure and layout of key elements without detailed design elements. Wireframes help designers and stakeholders visualize the basic structure of a product before investing time in detailed designs.",
-  },
-  {
-    title: "What is user testing?",
-    text:
-      "User testing is the process of evaluating a product by testing it with representative users. It involves observing users as they attempt to complete tasks using the product. This helps identify usability issues, gather user feedback, and validate design decisions to improve the overall user experience.",
+      "It depends on the global utilization of the URunner App and the total number of steps recorded and calories burned across the world.  The more the users, steps and calories, the higher the value. Our goal is to have a positive impact on Global Health and Fitness!",
   },
 ];
 
