@@ -13,6 +13,7 @@ interface Item {
   description: string;
   image: string;
   location: string;
+  url: string;
 }
 
 const Page = () => {
@@ -76,11 +77,15 @@ const Page = () => {
         </span>
       </div>
 
-      <button className="w-full md:w-[200px] h-12 mt-[60px] px-[30px] py-3 bg-[#007aff] rounded-[10px]  shadow-inner justify-center items-center gap-2.5 inline-flex">
+      <a
+        href={item?.url}
+        target="_blank"
+        className="w-full md:w-[200px] h-12 mt-[60px] px-[30px] py-3 bg-[#007aff] rounded-[10px]  shadow-inner justify-center items-center gap-2.5 inline-flex"
+      >
         <p className="text-center text-white text-base md:text-xl font-semibold font-['Urbanist'] leading-normal">
           Register Now
         </p>
-      </button>
+      </a>
     </article>
   );
 };

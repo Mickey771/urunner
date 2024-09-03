@@ -49,6 +49,7 @@ const Navbar = () => {
             <Link
               key={index}
               href={item.path}
+              onClick={() => setIsMenu(false)}
               className={` text-[18px] lg:text-[22px] font-medium font-['Poppins'] tracking-wide ${
                 path === item.path.split("/")[1]
                   ? "text-white px-2.5 bg-primaryBlue rounded-[8px]"

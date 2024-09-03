@@ -9,6 +9,7 @@ export const upcomingEvents = [
       "Official Qualifier for all Major Half Marathons across Pan India.",
     image: "mumbai.png",
     location: "Huntington Beach, CA 92648",
+    url: "https://events.fitasf.com/mumbai-10k-challenge-2-0.html",
   },
   {
     id: "2",
@@ -20,5 +21,6 @@ export const upcomingEvents = [
       "All courses start on Pacific Coast Highway at Main Street in front of Huntington Beach Pier Plaza and finish on Pacific Coast Highway at Sixth Street.",
     image: "surfer.webp",
     location: "HGallant Sports Arena, Mumbai, Maharashtra 400049",
+    url: "https://www.surfcity10.com/event-schedule/",
   },
 ];
