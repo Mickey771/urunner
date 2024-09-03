@@ -5,6 +5,7 @@ import EveryStep from "./EveryStep";
 import YourSuccess from "./YourSuccess";
 import Image from "next/image";
 import ActivityScore from "./ActivityScore";
+import { countries } from "@/utils/data";
 
 const SectionTwo = () => {
   return (
@@ -26,6 +27,31 @@ const SectionTwo = () => {
           style={{ width: "100%", height: "100%" }}
           alt="map"
         />
+      </div>
+
+      <p className="px-6 lg:px-0 lg:w-[710px] mt-[15px] mb-16 text-center text-[#202020]/80 text-base md:text-xl lg:text-2xl font-semibold font-['Urbanist'] lg:leading-loose">
+        We are located in the following countries and more
+      </p>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-40">
+        {countries.map((item, index) => (
+          <div className=" flex gap-2.5 items-center justify-center w-full py-4 md:py-6 lg:py-8 px-2 md:px-3 lg:px-5 shadow-[0px_3.01px_15.427px_rgba(20,0,66,0.1)] rounded-[10px]">
+            <span className="w-6 h-6 inline-flex rounded-full">
+              <Image
+                src={`/countries/${item.icon}.png`}
+                height={0}
+                width={0}
+                sizes="100vw"
+                style={{ width: "100%", height: "100%" }}
+                alt={item.icon}
+                className="object-cover rounded-full"
+              />
+            </span>
+            <p className="  text-black text-[12px] mb:text-[16px] md:text-[20px] lg:text-[25.53px] font-semibold font-['Poppins']">
+              {item.text}
+            </p>
+          </div>
+        ))}
       </div>
 
       <h1 className="text-[#202020] text-center text-[32px] md:text-[50px] lg:text-[64px] font-black font-['Urbanist'] leading-[86.25px]">

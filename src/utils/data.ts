@@ -24,3 +24,94 @@ export const upcomingEvents = [
     url: "https://www.surfcity10.com/event-schedule/",
   },
 ];
+
+export const countries = [
+  {
+    text: "Japan",
+    icon: "japan",
+  },
+  {
+    text: "Canada",
+    icon: "canada",
+  },
+  {
+    text: "Philippines",
+    icon: "philippines",
+  },
+  {
+    text: "Ukraine",
+    icon: "ukraine",
+  },
+  {
+    text: "Ghana",
+    icon: "ghana",
+  },
+  {
+    text: "Denmark",
+    icon: "denmark",
+  },
+  {
+    text: "Australia",
+    icon: "australia",
+  },
+  {
+    text: "Germany",
+    icon: "germany",
+  },
+  {
+    text: "France",
+    icon: "france",
+  },
+  {
+    text: "Jordan",
+    icon: "jordan",
+  },
+  {
+    text: "Vietnam",
+    icon: "vietnam",
+  },
+  {
+    text: "Spain",
+    icon: "spain",
+  },
+  {
+    text: "Taiwan",
+    icon: "taiwan",
+  },
+  {
+    text: "Pakistan",
+    icon: "pakistan",
+  },
+  {
+    text: "Luxembourg",
+    icon: "luxembourg",
+  },
+  {
+    text: "Bulgaria",
+    icon: "bulgaria",
+  },
+  {
+    text: "Turkiye",
+    icon: "turkey",
+  },
+  {
+    text: "Belgium",
+    icon: "belgium",
+  },
+  {
+    text: "Saudi Arabia",
+    icon: "saudi-arabia",
+  },
+  {
+    text: "New Zealand",
+    icon: "new-zealand",
+  },
+  {
+    text: "Italy",
+    icon: "italy",
+  },
+  {
+    text: "Sweden",
+    icon: "sweden",
+  },
+];
