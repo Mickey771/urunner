@@ -30,7 +30,7 @@ const Navbar = () => {
   const [isMenu, setIsMenu] = useState(false);
   const [isButton, setIsButton] = useState(false);
 
-  const path = usePathname();
+  const path = usePathname().split("/")[1];
 
   return (
     <nav className="w-full sticky top-0 lg:top-3 z-[999] ">
@@ -50,7 +50,7 @@ const Navbar = () => {
               key={index}
               href={item.path}
               className={` text-[18px] lg:text-[22px] font-medium font-['Poppins'] tracking-wide ${
-                path === item.path
+                path === item.path.split("/")[1]
                   ? "text-white px-2.5 bg-primaryBlue rounded-[8px]"
                   : "text-[#000000B2]"
               }`}

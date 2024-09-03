@@ -26,8 +26,8 @@ const Page = () => {
 
   return (
     <article className="w-full max-w-[834px] py-[18px] md:py-[28px] px-2 md:px-4 lg:px-6 border-[0.3px] border-[#B9B9B9] rounded-[14px]">
-      <div className="flex items-center justify-between">
-        <p className=" opacity-60 text-[#202224] text-xs md:text-base font-semibold font-['Nunito Sans']">
+      <div className="flex items-start justify-between">
+        <p className=" opacity-60 text-[#202224] max-w-[150px] md:max-w-[400px] text-xs md:text-base font-semibold font-['Nunito Sans']">
           {item?.date}, 2024 {item?.location}
         </p>
         <h2 className=" text-right text-[#202224] text-[18px] md:text-[24px] lg:text-[32px] font-bold font-['Nunito Sans']">
@@ -76,7 +76,7 @@ const Page = () => {
         </span>
       </div>
 
-      <button className="w-full md:w-[200px] h-12 mt-[60px] px-[30px] py-3 bg-[#007aff] rounded-[10px] shadow shadow-inner justify-center items-center gap-2.5 inline-flex">
+      <button className="w-full md:w-[200px] h-12 mt-[60px] px-[30px] py-3 bg-[#007aff] rounded-[10px]  shadow-inner justify-center items-center gap-2.5 inline-flex">
         <p className="text-center text-white text-base md:text-xl font-semibold font-['Urbanist'] leading-normal">
           Register Now
         </p>

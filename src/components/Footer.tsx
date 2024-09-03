@@ -162,7 +162,7 @@ const Footer = () => {
             </p>
           </div>
           <p className="w-[193px] lg:text-right text-[#504949] text-sm md:text-base font-normal font-['Inter'] leading-normal">
-            © 2024 Urunner Ltd
+            © 2024 URunner Inc
           </p>
         </div>
       </div>

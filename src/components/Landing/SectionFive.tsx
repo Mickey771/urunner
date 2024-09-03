@@ -1,9 +1,46 @@
 import { Quotesgrey } from "@/assets/svgs";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { HiArrowLongLeft, HiArrowLongRight } from "react-icons/hi2";
 
+const reviews = [
+  {
+    text:
+      "This is by far one of the best fitness apps I have used. Highly recommend trying it out if you are looking for a way to motivate yourself to workout! My friends and I love comparing our activity scores at the end of the day!",
+    name: "IOS App user",
+    image: "user",
+  },
+  {
+    text: "Great App",
+    name: "Mickey",
+    image: "user",
+  },
+];
+
 const SectionFive = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeReview, setActiveReview] = useState(reviews[currentIndex]);
+
+  const handleChangeReview = (action: string) => {
+    if (action === "next") {
+      if (currentIndex === reviews.length - 1) {
+        setCurrentIndex(0);
+        return;
+      }
+      setCurrentIndex((prev) => prev + 1);
+    } else if (action === "prev") {
+      if (currentIndex === 0) {
+        setCurrentIndex(reviews.length - 1);
+        return;
+      }
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
+  useEffect(() => {
+    setActiveReview(reviews[currentIndex]);
+  }, [currentIndex]);
+
   return (
     <section className="mt-[150px] md:mt-[193px] w-full">
       <div
@@ -19,30 +56,33 @@ const SectionFive = () => {
         </h1>
         <div className="relative  bg-white w-full max-w-[304px] lg:max-w-[534px] h-[277px] rounded-[17px] flex flex-col items-center">
           <span className="w-fit h-full absolute top-0 right-0 flex items-center justify-center">
-            <button className="translate-x-[50%] rounded-full text-base md:text-xl lg:text-2xl h-[38px] md:h-[48px] lg:h-[62px] w-[38px] md:w-[48px] lg:w-[62px] bg-[#737373] flex justify-center items-center">
+            <button
+              onClick={() => handleChangeReview("next")}
+              className="translate-x-[50%] rounded-full text-base md:text-xl lg:text-2xl h-[38px] md:h-[48px] lg:h-[62px] w-[38px] md:w-[48px] lg:w-[62px] bg-[#737373] flex justify-center items-center"
+            >
               <HiArrowLongRight color="white" />
             </button>
           </span>
           <span className="w-fit h-full absolute top-0 left-0 flex items-center justify-center">
-            <button className="translate-x-[-50%] rounded-full text-base md:text-xl lg:text-2xl h-[38px] md:h-[48px] lg:h-[62px] w-[38px] md:w-[48px] lg:w-[62px] bg-[#737373] flex justify-center items-center">
+            <button
+              onClick={() => handleChangeReview("prev")}
+              className="translate-x-[-50%] rounded-full text-base md:text-xl lg:text-2xl h-[38px] md:h-[48px] lg:h-[62px] w-[38px] md:w-[48px] lg:w-[62px] bg-[#737373] flex justify-center items-center"
+            >
               <HiArrowLongLeft color="white" />
             </button>
           </span>
           <div className="absolute h-fit">
             <Image
-              src={"/profile.png"}
+              src={`/user.png`}
               height={120}
               width={120}
               alt="profile"
-              className="translate-y-[-50%]"
+              className="translate-y-[-50%] rounded-full"
             />
           </div>
-          <h2 className="w-full max-w-[176px] lg:max-w-[390px] relative mt-[99px] text-center text-black text-[24px] lg:text-[32px] font-extrabold font-['Urbanist'] leading-[34.449px] tracking-wider">
-            Reviews are
-            <br />
-            coming soon
-            <span className="inline-flex absolute top-[-27%] lg:top-[-65%] w-[42px] md:w-[82px] left-[-14%] lg:left-[-10%]">
-              {/* <Quotesgrey /> */}
+          <h2 className="w-fit max-w-[176px] lg:max-w-[390px] relative mt-[99px] text-center text-black text-[12px] lg:text-[18px] font-extrabold font-['Urbanist'] lg:leading-[34.449px] tracking-wider">
+            {activeReview.text.slice(0, 85)}...
+            {/* <span className="inline-flex absolute top-[-27%] lg:top-[-75%] w-[42px] md:w-[82px] left-[-22%] lg:left-[-18%]">
               <Image
                 src={"/quotesgrey.svg"}
                 height={0}
@@ -51,10 +91,10 @@ const SectionFive = () => {
                 sizes="100vw"
                 style={{ width: "100%", height: "100%" }}
               />
-            </span>
+            </span> */}
           </h2>
           <p className="w-[141px] lg:w-[195.64px] mt-[23px] text-center text-black text-base lg:text-xl font-semibold font-['Urbanist'] leading-[24px] tracking-wide">
-            Urunner - Administration
+            - {activeReview.name}
           </p>
         </div>
       </div>
