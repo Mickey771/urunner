@@ -29,6 +29,22 @@ const accordionData = [
     text:
       "It depends on the global utilization of the URunner App and the total number of steps recorded and calories burned across the world.  The more the users, steps and calories, the higher the value. Our goal is to have a positive impact on Global Health and Fitness!",
   },
+  {
+    title: "Can I transfer my URNCoins to other users?",
+    text:
+      "Yes, you can transfer your URNCoins to other URunner users. Simply go to the 'Transfer' section in your URunner wallet, enter the recipient's URunner username or unique ID, specify the amount you want to send, and confirm the transaction. It's a great way to motivate friends and family or participate in fitness challenges!",
+  },
+  {
+    title: "Are there any rewards I can redeem with my URNCoins?",
+    text:
+      "Absolutely! URunner has partnered with various brands to offer a range of rewards. You can redeem your URNCoins for discounts on fitness gear, healthy meal subscriptions, gym memberships, and more. Check the 'Rewards' section in the app to see the current offerings and their URNCoin prices.",
+  },
+  {
+    title:
+      "How does URunner ensure the accuracy of step counts and calorie burns?",
+    text:
+      "URunner uses advanced algorithms and machine learning to validate the data received from connected fitness apps. We also cross-reference the data with typical human activity patterns to detect any anomalies. If we suspect any unusual activity, we may request additional verification from the user to ensure the integrity of our system and fairness for all participants.",
+  },
 ];
 
 const AccordionItem: React.FC<AccordionItemProps> = ({
