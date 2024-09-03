@@ -27,7 +27,7 @@ const StoreFlag: React.FC<{ text: string; bg: any; icon: any }> = ({
           />
         </span>
       </span>
-      <p className="text-white text-[12px] sm:text-[18px] md:text-[22px] lg:text-[28px] font-bold font-['Urbanist'] leading-[37.73px] absolute top-0 right-0 h-full w-fit inline-flex items-center justify-center pr-[8px] sm:pr-[12px] md:pr-[22px] lg:pr-[29px]">
+      <p className="text-white text-[12px] sm:text-[18px] md:text-[22px] lg:text-[28px] font-bold font-['Urbanist'] leading-[37.73px] absolute top-0 right-0 h-full w-fit inline-flex items-center justify-center pr-[8px] sm:pr-[12px] md:pr-[18px] lg:pr-[20px]">
         Get on {text}
       </p>
     </button>

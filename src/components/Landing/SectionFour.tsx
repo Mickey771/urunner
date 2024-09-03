@@ -44,7 +44,7 @@ const SectionFour = () => {
 
             <div className="mt-[20px] lg:mt-[46px] flex justify-between items-center">
               <div className=" flex gap-2 items-center">
-                <span className="inline-flex w-full max-w-[34px]">
+                <span className="inline-flex w-[20px] lg:w-[34px]">
                   <Image
                     src={"/man1.png"}
                     height={0}
@@ -55,7 +55,7 @@ const SectionFour = () => {
                     className="rounded-full"
                   />
                 </span>
-                <span className="inline-flex w-full max-w-[34px]">
+                <span className="inline-flex w-[20px] lg:w-[34px]">
                   <Image
                     src={"/man2.png"}
                     height={0}
@@ -66,7 +66,7 @@ const SectionFour = () => {
                     className="rounded-full"
                   />
                 </span>
-                <span className="inline-flex w-full max-w-[34px]">
+                <span className="inline-flex w-[20px] lg:w-[34px]">
                   <Image
                     src={"/man3.png"}
                     height={0}
