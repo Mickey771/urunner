@@ -33,7 +33,7 @@ const Navbar = () => {
   const path = usePathname().split("/")[1];
 
   return (
-    <nav className="w-full sticky top-0 lg:top-3 z-[999] ">
+    <nav className="w-full  top-0 lg:mt-3 z-[999] ">
       <div className="bg-white py-4 px-4 flex justify-between items-center rounded-[12px] w-full max-w-max mx-auto shadow-[0px_4px_15px_0px_rgba(0,0,0,0.15)] gap-4 lg:gap-2 relative">
         <span className="zr:[&>svg]:scale-[75%] md:[&>svg]:scale-[80%] lg:[&>svg]:scale-100">
           <URunner />
