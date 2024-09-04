@@ -19,7 +19,7 @@ const SectionTwo = () => {
         URunners around the globe
       </p>
 
-      <div className="mt-[52px]">
+      <div className="mt-[52px] max-h-[724px]">
         <Image
           src={"/map.svg"}
           width={0}
