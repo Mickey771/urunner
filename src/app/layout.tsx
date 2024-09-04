@@ -6,7 +6,7 @@ import MainLayout from "@/components/MainLayout";
 const urbanist = Urbanist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "uRunner",
+  title: "URunner",
   description: "Kickstarting healthy lifestyle by tokenizing global fitness",
 };
 
