@@ -13,12 +13,12 @@ const navLinks = [
     text: "Home",
   },
   {
-    path: "/privacy-policy",
-    text: "Privacy Policy",
-  },
-  {
     path: "/events",
     text: "Events",
+  },
+  {
+    path: "/privacy-policy",
+    text: "Privacy Policy",
   },
   {
     path: "/faq",
