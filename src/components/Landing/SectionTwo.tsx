@@ -35,7 +35,10 @@ const SectionTwo = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 mb-40">
         {countries.map((item, index) => (
-          <div className=" flex gap-2.5 items-center justify-center w-full py-4 md:py-6 lg:py-8 px-2 md:px-3 lg:px-5 shadow-[0px_3.01px_15.427px_rgba(20,0,66,0.1)] rounded-[10px]">
+          <div
+            key={index}
+            className=" flex gap-2.5 items-center justify-center w-full py-4 md:py-6 lg:py-8 px-2 md:px-3 lg:px-5 shadow-[0px_3.01px_15.427px_rgba(20,0,66,0.1)] rounded-[10px]"
+          >
             <span className="w-6 h-6 inline-flex rounded-full">
               <Image
                 src={`/countries/${item.icon}.png`}
