@@ -35,18 +35,25 @@ const ScrollingCountries: React.FC<ScrollingCountriesProps> = ({
         {countries.concat(countries).map((item, index) => (
           <div
             key={index}
-            className="flex gap-2.5 items-center justify-center flex-shrink-0 py-4 md:py-6 lg:py-1 px-2 md:px-3 lg:px-5 shadow-[0px_3.01px_15.427px_rgba(20,0,66,0.1)] rounded-[10px]"
+            className="flex min-w-[140px] gap-2.5 items-center justify-center flex-shrink-0 py-4 md:py-6 lg:py-1 px-0 mb:px-2 md:px-3 lg:px-5 shadow-[0px_3.01px_15.427px_rgba(20,0,66,0.1)] rounded-[10px]"
           >
-            <span className="w-6 h-6 inline-flex rounded-full">
-              <Image
+            <span
+              className="w-8 h-8  justify-center
+             items-center  inline-flex rounded-full"
+              style={{
+                backgroundImage: `url(/countries/${item.icon}.png)`,
+                backgroundSize: "cover",
+              }}
+            >
+              {/* <Image
                 src={`/countries/${item.icon}.png`}
-                height={0}
-                width={0}
-                sizes="100vw"
-                style={{ width: "100%", height: "100%" }}
+                height={76}
+                width={76}
+                // sizes="100vw"
+                // style={{ width: "100%", height: "100%" }}
                 alt={item.icon}
-                className="object-cover rounded-full"
-              />
+                className="object-center border-2 border-red-500"
+              /> */}
             </span>
             <p className="text-black text-[12px] md:text-[16px] lg:text-[25.53px] font-semibold font-['Poppins']">
               {item.text}

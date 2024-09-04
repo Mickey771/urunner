@@ -40,7 +40,7 @@ export const countries = [
   },
   {
     text: "Ukraine",
-    icon: "ukraine",
+    icon: "ukraine", //
   },
   {
     text: "Ghana",
@@ -52,7 +52,7 @@ export const countries = [
   },
   {
     text: "Australia",
-    icon: "australia",
+    icon: "australia", //
   },
   {
     text: "Germany",
@@ -108,10 +108,10 @@ export const countries = [
   },
   {
     text: "Italy",
-    icon: "italy",
+    icon: "italy", //
   },
   {
     text: "Sweden",
-    icon: "sweden",
+    icon: "sweden", //
   },
 ];
