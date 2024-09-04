@@ -15,7 +15,6 @@ const SectionTwo = () => {
         Where we are
       </h1>
       <p className="px-6 lg:px-0 lg:w-[710px] mt-[15px] text-center text-[#202020]/80 text-base md:text-xl lg:text-2xl font-semibold font-['Urbanist'] lg:leading-loose">
-        {/* We are present in various locations around the world */}
         URunners around the globe
       </p>
 

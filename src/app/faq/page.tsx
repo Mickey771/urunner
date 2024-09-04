@@ -93,6 +93,10 @@ const FAQAccordion = () => {
           onToggle={() => handleToggle(index)}
         />
       ))}
+
+      <p className="w-full max-w-[1072px] mx-auto   mt-[15px] text-left text-[#202020]/80 text-base md:text-xl lg:text-2xl font-semibold font-['Urbanist'] lg:leading-loose">
+        You can find additional information and FAQs on the uRunner app
+      </p>
     </section>
   );
 };
