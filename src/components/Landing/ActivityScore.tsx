@@ -21,7 +21,7 @@ const ActivityScore = () => {
           </span>
           <br />
           <span className="text-[#202020] text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed md:leading-loose">
-            What’s your Activity Score?
+            Join URunner and track your Activity Score
           </span>
           <span className="text-[#202020]/80 text-base md:text-[20px] lg:text-[24px] font-extrabold font-['Urbanist'] leading-relaxed md:leading-loose">
             {" "}
