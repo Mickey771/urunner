@@ -33,7 +33,7 @@ export default function RootLayout({
         />
         <meta
           property="og:image"
-          content="https://www.urunner.io/preview.png"
+          content="https://www.urunner.io/preview.jpeg"
         />
         <meta property="og:url" content="https://www.urunner.io" />
         <meta property="og:type" content="website" />
