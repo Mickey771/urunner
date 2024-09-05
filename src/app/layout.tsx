@@ -17,6 +17,30 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <title>URunner</title>
+        <meta
+          name="description"
+          content="Kickstarting healthy lifestyle by tokenizing global fitness"
+        />
+
+        {/* Open Graph Meta Tags (Facebook, LinkedIn) */}
+        <meta property="og:title" content="Your Page Title" />
+        <meta
+          property="og:description"
+          content="Kickstarting healthy lifestyle by tokenizing global fitness"
+        />
+        <meta
+          property="og:image"
+          content="https://www.urunner.io/preview.png"
+        />
+        <meta property="og:url" content="https://www.urunner.io" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Urunner" />
+
+        {/* Optional: Favicon */}
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={urbanist.className}>
         <MainLayout>{children}</MainLayout>
       </body>
