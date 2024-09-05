@@ -25,7 +25,7 @@ export default function RootLayout({
         />
 
         {/* Open Graph Meta Tags (Facebook, LinkedIn) */}
-        <meta property="og:title" content="Your Page Title" />
+        <meta property="og:title" content="URunner" />
         <meta
           property="og:description"
           content="Kickstarting healthy lifestyle by tokenizing global fitness"
