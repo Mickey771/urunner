@@ -20,7 +20,7 @@ const SectionOne = () => {
         <div className="absolute top-0 left-20">
           <Eclipse />
         </div>
-        <h1 className="w-full max-w-[500px] lg:max-w-[642px] relative z-[11] text-[#202020] text-[32px] mb:text-[45px] md:text-[58px] lg:text-[64px] font-black font-['Urbanist'] leading-[53px] md:leading-[70px] lg:leading-[86.25px]">
+        <h1 className="w-full max-w-[500px] lg:max-w-[682px] relative z-[11] text-[#202020] text-[32px] mb:text-[45px] md:text-[58px] lg:text-[64px] font-black font-['Urbanist'] leading-[53px] md:leading-[70px] lg:leading-[86.25px]">
           Kickstarting healthy lifestyles by tokenizing global fitness.
         </h1>
         <p className="relative z-[11] text-[#202020]/70 text-xl md:text-2xl  mt-[18px] font-semibold font-['Urbanist'] leading-[32.342px]">
