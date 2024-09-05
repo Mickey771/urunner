@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import MainLayout from "@/components/MainLayout";
+import { Analytics } from "@vercel/analytics/react";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -42,7 +43,10 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={urbanist.className}>
-        <MainLayout>{children}</MainLayout>
+        <MainLayout>
+          {children}
+          <Analytics />
+        </MainLayout>
       </body>
     </html>
   );
