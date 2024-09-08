@@ -28,10 +28,13 @@ const Page = () => {
   return (
     <article className="w-full max-w-[834px] py-[18px] md:py-[28px] px-2 md:px-4 lg:px-6 border-[0.3px] border-[#B9B9B9] rounded-[14px]">
       <div className="flex items-center justify-between">
-        <p className=" opacity-60 text-[#202224] max-w-[150px] md:max-w-[400px] text-xs md:text-base font-semibold font-['Nunito Sans']">
-          {item?.date}, 2024 {item?.location}
+        <p className="  text-[#202224] max-w-[150px] md:max-w-[400px] text-xs md:text-base  font-['Nunito Sans']">
+          <span className="font-extrabold opacity-100">
+            {item?.date}, 2024{" "}
+          </span>
+          <span className="opacity-60 font-bold">{item?.location}</span>
         </p>
-        <h2 className=" text-right text-[#202224] text-[18px] md:text-[24px] lg:text-[32px] font-bold font-['Nunito Sans']">
+        <h2 className=" text-right text-[#202224] text-[18px] md:text-[24px] lg:text-[32px] font-semibold font-['Nunito Sans']">
           {item?.heading}
         </h2>
       </div>

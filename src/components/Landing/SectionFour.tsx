@@ -124,7 +124,7 @@ const SectionFour = () => {
             </span>
           </h2>
           <p className="w-fit text-center text-white text-[18px] md:text-[26px] lg:text-[32px] font-semibold font-['Urbanist'] leading-[43.12px]">
-            Ralph Waldo Emersone
+            Ralph Waldo Emerson
           </p>
         </div>
         <div className="w-full h-[255px] lg:h-full  relative">
