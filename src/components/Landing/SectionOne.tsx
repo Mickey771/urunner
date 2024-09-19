@@ -1,16 +1,7 @@
-import {
-  Appstore,
-  Banner,
-  BlackCurve,
-  Bluecurve,
-  Eclipse,
-  Eclipsesmall,
-  Playstore,
-} from "@/assets/svgs";
+import { Eclipse, Eclipsesmall } from "@/assets/svgs";
 import React from "react";
 import StoreFlag from "./StoreFlag";
 import { LuMoveRight } from "react-icons/lu";
-import Link from "next/link";
 import Image from "next/image";
 
 const SectionOne = () => {
@@ -61,24 +52,6 @@ const SectionOne = () => {
             </p>
           </div>
         </div>
-        {/* <div
-          style={{
-            backgroundImage: "url(/shoes.png)",
-            backgroundRepeat: "no-repeat",
-            // backgroundSize: "contain",
-          }}
-          className="mt-[64px] h-[237px] max-w-[358px] md:max-w-[500px] lg:max-w-[702px]   relative z-10 pt-[25px] lg:pt-[60px] pl-[23px] rounded-[40px] lg:rounded-none lg:pl-[56px] h-[255px] lg:h-[342px]"
-        >
-          <h2 className="text-white text-[24px] lg:text-[40px] font-extrabold font-['Urbanist'] lg:leading-[53.90px]">
-            Multiple healthy Routines
-          </h2>
-          <span className="inline-flex w-full max-w-[309px] lg:max-w-[500px] h-[0px] border border-white/60 mt-[16px] lg:mt-[22px] mb-4 lg:mb-6"></span>
-          <p className="w-full max-w-[310px] lg:max-w-[464px] text-white text-base lg:text-2xl font-semibold font-['Urbanist'] lg:leading-[32.342px]">
-            Explore our diverse range of Running Routines, from high-intensity
-            interval running to walking sessions, all tailored to burn your
-            calories.
-          </p>
-        </div> */}
       </div>
 
       <div className="w-full flex  h-full  relative">
@@ -100,21 +73,7 @@ const SectionOne = () => {
               />
             </span>
           </div>
-          <div className="relative inline-flex h-[325px] lg:h-[453px] w-[332px] mb:w-[400px] sm:w-[440px] md:w-[500px] lg:w-[553px] bg-primaryBlue rounded-[44px]">
-            {/* <div className="absolute z-[3] top-[15px] left-[-169px] w-[333px] h-[96px] bg-[rgba(0,0,0,0.10)] backdrop-blur-[42.5px] rounded-[30px] flex items-center gap-[26px] py-5 px-[22px]">
-              <Image src={"/person.png"} width={56} height={56} alt="person" />
-              <Username />
-              <span className="w-[17px] h-[0px] origin-top-left rotate-90 border border-white inline-flex"></span>
-              <span className="inline-flex justify-center items-center flex-col gap-0">
-                <p className="text-white text-sm font-semibold font-['Urbanist'] leading-[18.87px]">
-                  More
-                </p>
-                <span>
-                  <LuMoveRight color="white" size={22} />
-                </span>
-              </span>
-            </div> */}
-          </div>
+          <div className="relative inline-flex h-[325px] lg:h-[453px] w-[332px] mb:w-[400px] sm:w-[440px] md:w-[500px] lg:w-[553px] bg-primaryBlue rounded-[44px]"></div>
         </div>
       </div>
     </section>

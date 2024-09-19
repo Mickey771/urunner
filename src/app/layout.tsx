@@ -3,6 +3,7 @@ import { Urbanist } from "next/font/google";
 import "./globals.css";
 import MainLayout from "@/components/MainLayout";
 import { Analytics } from "@vercel/analytics/react";
+import StoreProvider from "@/components/StoreProvider";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -43,10 +44,12 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={urbanist.className}>
-        <MainLayout>
-          {children}
-          <Analytics />
-        </MainLayout>
+        <StoreProvider>
+          <MainLayout>
+            {children}
+            <Analytics />
+          </MainLayout>
+        </StoreProvider>
       </body>
     </html>
   );
