@@ -3,7 +3,7 @@ import React from "react";
 
 const CommunityDetailHeader = () => {
   return (
-    <div className="flex justify-between items-center ">
+    <div className="flex px-8 justify-between items-center ">
       <div className="flex flex-col gap-[27px]">
         <h1 className="text-[#191b1c] text-lg font-semibold font-['Public Sans'] leading-normal">
           URunner Community

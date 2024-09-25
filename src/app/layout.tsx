@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
-import MainLayout from "@/components/MainLayout";
 import { Analytics } from "@vercel/analytics/react";
 import StoreProvider from "@/components/StoreProvider";
 
@@ -45,10 +44,8 @@ export default function RootLayout({
       </head>
       <body className={urbanist.className}>
         <StoreProvider>
-          <MainLayout>
-            {children}
-            <Analytics />
-          </MainLayout>
+          {children}
+          <Analytics />
         </StoreProvider>
       </body>
     </html>

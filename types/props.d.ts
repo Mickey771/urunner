@@ -47,3 +47,19 @@ interface PasswordProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
+
+interface CommentProps {
+  imageSrc: string;
+  text: string;
+  timeStamp: string;
+  name: string;
+  line: boolean;
+}
+
+interface AnalyticsCardProps {
+  heading: string;
+  icon: string;
+  value: string;
+  percentageChange: number;
+  timeStamp: string;
+}

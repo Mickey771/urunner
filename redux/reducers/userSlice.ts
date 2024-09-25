@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-// interface CounterState {
-//   value: number;
-// }
+interface InitialState {
+  communityModalStep: number;
+}
 
-const initialState = { communityModalStep: 0 };
+const initialState: InitialState = { communityModalStep: 0 };
 
 const userSlice = createSlice({
   name: "user",

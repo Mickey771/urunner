@@ -1,14 +1,18 @@
 import React from "react";
 import Member from "./Member";
 import { HiArrowRight } from "react-icons/hi";
+import { setCommunityModalStep } from "../../../redux/reducers/userSlice";
+import { useDispatch } from "react-redux";
 
 const Members: React.FC<{
   heading: string;
   total: number;
   seeMore: boolean;
 }> = ({ heading, total, seeMore }) => {
+  const dispatch = useDispatch();
+
   return (
-    <div className="mb-5">
+    <div className="mb-5 px-8">
       <div className="w-[720px]">
         <span className="text-[#191b1c] text-base font-semibold font-['Public Sans'] leading-[23px]">
           {heading}{" "}
@@ -22,7 +26,10 @@ const Members: React.FC<{
           <Member key={index} />
         ))}
         {seeMore && (
-          <button className="max-w-[140px] h-10 px-6 bg-[#005ce7] rounded-full justify-center items-center gap-2 inline-flex">
+          <button
+            onClick={() => dispatch(setCommunityModalStep(0))}
+            className="max-w-[140px] h-10 px-6 bg-[#005ce7] rounded-full justify-center items-center gap-2 inline-flex"
+          >
             <span className="text-white text-sm font-semibold font-['Public Sans'] capitalize leading-10">
               see more
             </span>

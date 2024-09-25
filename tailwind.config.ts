@@ -17,6 +17,7 @@ const config: Config = {
       },
       maxWidth: {
         max: "1310px",
+        admin: "1152px",
       },
       screens: {
         zr: "0px",

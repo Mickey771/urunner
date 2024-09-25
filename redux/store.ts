@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./reducers/counterSlice";
 import userReducer from "./reducers/userSlice";
+import adminReducer from "./reducers/adminSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      counter: counterReducer,
       user: userReducer,
+      admin: adminReducer,
     },
   });
 };

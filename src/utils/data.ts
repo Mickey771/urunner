@@ -1,3 +1,7 @@
+import { HiOutlineUserGroup } from "react-icons/hi2";
+import { IoCalendarOutline, IoSpeedometerOutline } from "react-icons/io5";
+import { MdInfoOutline } from "react-icons/md";
+
 export const upcomingEvents = [
   {
     id: "1",
@@ -40,7 +44,7 @@ export const countries = [
   },
   {
     text: "Ukraine",
-    icon: "ukraine", //
+    icon: "ukraine",
   },
   {
     text: "Ghana",
@@ -113,5 +117,44 @@ export const countries = [
   {
     text: "Sweden",
     icon: "sweden", //
+  },
+];
+
+export const comments = [
+  {
+    imageSrc: "/boy.png",
+    name: "Jane Cooper",
+    text: "@Everyone Great Job.",
+    timeStamp: "10 mins ago",
+  },
+  {
+    imageSrc: "/guy.png",
+    name: "Brooklyn Simmons (You)",
+    text:
+      "In lobortis fermentum venenatis. Phasellus orci libero, feugiat et velit non, sagittis feugiat eros. In placerat risus vitae est faucibus, in laoreet enim rutrum. ",
+    timeStamp: "13 hours ago",
+  },
+];
+
+export const adminLinks = [
+  {
+    text: "Dashboard",
+    path: "dashboard",
+    icon: IoSpeedometerOutline,
+  },
+  {
+    text: "Offers",
+    path: "offers",
+    icon: MdInfoOutline,
+  },
+  {
+    text: "Events",
+    path: "events",
+    icon: IoCalendarOutline,
+  },
+  {
+    text: "Community",
+    path: "community",
+    icon: HiOutlineUserGroup,
   },
 ];
