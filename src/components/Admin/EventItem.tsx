@@ -1,9 +1,13 @@
+import { useDisclosure } from "@/hooks/useDisclosure";
 import Image from "next/image";
 import React from "react";
 import { GoPaperclip } from "react-icons/go";
 import { SlPencil } from "react-icons/sl";
+import RegisteredUsersModal from "../Modals/RegisteredUsersModal";
 
 const EventItem = () => {
+  const registeredUsersModal = useDisclosure();
+
   return (
     <aside className="w-full">
       <div className="flex justify-between items-center">
@@ -78,15 +82,22 @@ const EventItem = () => {
             />
           </span>
         ))}
-        <div className="w-[50px] h-[50px] flex justify-center items-center text-[#007aff] text-base font-bold font-['Nunito Sans'] p-2 border border-[#007AFF] rounded-full">
-          <p>14+</p>
-        </div>
+        <button
+          onClick={registeredUsersModal.open}
+          className="w-[50px] h-[50px] flex justify-center items-center text-[#007aff] text-base font-bold font-['Nunito Sans'] p-2 border border-[#007AFF] rounded-full"
+        >
+          <span>14+</span>
+        </button>
       </div>
       <button className="mt-[60px] h-[55px] px-6 py-4 bg-[#d0d4dd] rounded-lg flex-col justify-center items-center gap-2.5 inline-flex">
         <span className="text-center text-[#252525] text-base font-semibold font-['Inter'] leading-normal">
           Cancel Event
         </span>
       </button>
+
+      {registeredUsersModal.isOpen && (
+        <RegisteredUsersModal modal={registeredUsersModal} />
+      )}
     </aside>
   );
 };

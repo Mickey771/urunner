@@ -1,6 +1,8 @@
 "use client";
 import EventItem from "@/components/Admin/EventItem";
 import EventsCalendar from "@/components/Admin/EventsCalendar";
+import CreateEventModal from "@/components/Modals/CreateEventModal";
+import { useDisclosure } from "@/hooks/useDisclosure";
 import React, { useState } from "react";
 import { BsClockHistory } from "react-icons/bs";
 import { IoHomeOutline } from "react-icons/io5";
@@ -25,6 +27,8 @@ const filters = [
 const Page = () => {
   const [selected, setSelected] = useState("All Offers");
 
+  const createEventModal = useDisclosure();
+
   return (
     <div className="py-9  mx-auto w-full max-w-admin">
       <div className="flex justify-between items-center">
@@ -37,7 +41,7 @@ const Page = () => {
           </p>
         </div>
         <button
-          //   onClick={createOfferModal.open}
+          onClick={createEventModal.open}
           className="h-9 w-[165px] px-3 py-2 bg-[#007aff] rounded-md  items-center gap-2 inline-flex justify-center text-white text-sm font-medium font-['Inter'] leading-tight"
         >
           <span className="text-white relative">
@@ -95,6 +99,8 @@ const Page = () => {
         <EventsCalendar />
         <EventItem />
       </div>
+
+      {createEventModal && <CreateEventModal modal={createEventModal} />}
     </div>
   );
 };

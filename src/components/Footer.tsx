@@ -11,10 +11,53 @@ import {
   Whitecurvesmall,
 } from "@/assets/svgs";
 import Link from "next/link";
-import React from "react";
+import React, { FormEvent, useState } from "react";
 import { FaYoutube } from "react-icons/fa";
+import { setIsLoading, setModal } from "../../redux/reducers/userSlice";
+import { useDispatch } from "react-redux";
+import axios from "axios";
 
 const Footer = () => {
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!email) return;
+
+    dispatch(setIsLoading(true));
+    setError("");
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/newsletter/`,
+        { email }
+      );
+
+      if (response.status === 200) {
+        setEmail(""); // Clear form
+        dispatch(
+          setModal({ message: "You have subscribed successfully", open: true })
+        );
+      } else {
+        setError(response.data.message);
+        throw new Error();
+      }
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        setError(error.response?.data?.message);
+        console.log("There was an error: ", error.response?.data?.message);
+      } else {
+        setError("An unexpected error occurred");
+        console.log("There was an unexpected error: ", error);
+      }
+    } finally {
+      dispatch(setIsLoading(false));
+    }
+  };
+
   return (
     <footer className="w-full md:my-6 max-w-max mx-auto flex flex-wrap lg:flex-nowrap lg:gap-[18px]">
       <div className="bg-[#161313] w-full lg:max-w-[504px] lg:rounded-[20px] px-5 lg:px-10 py-[55px]">
@@ -90,7 +133,10 @@ const Footer = () => {
           </span>
         </div>
 
-        <div className="flex flex-wrap lg:flex-nowrap gap-4 items-center">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-wrap lg:flex-nowrap gap-4 items-center"
+        >
           <h2 className="text-[#202020] mr-2 w-full lg:max-w-[240px] text-[28px] font-bold font-['Urbanist'] leading-[33.60px]">
             Join our newsletter
           </h2>
@@ -102,18 +148,22 @@ const Footer = () => {
               type="email"
               name="email"
               id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Email address"
               className="focus:outline-none"
             />
           </label>
-          <button className=" px-2 md:px-4 lg:px-6 py-2 md:py-3 lg:py-4 bg-[#007aff] rounded-lg flex-col justify-center items-center gap-2.5 inline-flex">
-            <div className="justify-center items-center gap-2 inline-flex">
-              <div className="text-center text-white text-sm md:text-base font-semibold font-['Inter'] leading-normal">
-                Subscribe
-              </div>
-            </div>
+          <button
+            type="submit"
+            disabled={!email}
+            className=" px-2 md:px-4 lg:px-6 py-2 md:py-3 lg:py-4 bg-[#007aff] text-white hover:bg-white hover:text-primaryBlue border border-primaryBlue disabled:opacity-50 rounded-lg flex-col justify-center items-center gap-2.5 inline-flex"
+          >
+            <span className="text-center  text-sm md:text-base font-semibold font-['Inter'] leading-normal">
+              Subscribe
+            </span>
           </button>
-        </div>
+        </form>
 
         <div className="flex gap-4 items-center">
           <p className="text-[#344054] text-xs md:text-sm font-semibold font-['Inter'] leading-tight">
