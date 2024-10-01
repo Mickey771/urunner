@@ -63,3 +63,11 @@ interface AnalyticsCardProps {
   percentageChange: number;
   timeStamp: string;
 }
+
+interface Events {
+  _id: string;
+  title: string;
+  description: string;
+  date: string;
+  link: string;
+}

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Urbanist } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import StoreProvider from "@/components/StoreProvider";
+import ProviderWrapper from "../../redux/ProviderWrapper";
 
 const urbanist = Urbanist({ subsets: ["latin"] });
 
@@ -43,10 +43,8 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" />
       </head>
       <body className={urbanist.className}>
-        <StoreProvider>
-          {children}
-          <Analytics />
-        </StoreProvider>
+        <ProviderWrapper>{children}</ProviderWrapper>
+        <Analytics />
       </body>
     </html>
   );

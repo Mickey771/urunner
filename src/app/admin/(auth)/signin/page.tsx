@@ -1,8 +1,15 @@
 "use client";
+import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import { IoIosLock } from "react-icons/io";
 import { MdEmail } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import {
+  setIsAuth,
+  setIsLoading,
+  setToken,
+} from "../../../../../redux/reducers/adminSlice";
 
 const Page = () => {
   const [email, setEmail] = useState("");
@@ -10,11 +17,37 @@ const Page = () => {
   const [isPassword, setIsPassword] = useState(false);
 
   const router = useRouter();
+  const dispatch = useDispatch();
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!email || !password) return;
+    dispatch(setIsLoading(true));
     console.log(email, password);
-    router.push("/admin/dashboard");
+
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_URL}/users/login/`,
+        {
+          email,
+          password,
+        }
+      );
+
+      if (response.status === 200) {
+        const { token } = response.data;
+        dispatch(setIsAuth(true));
+        dispatch(setToken(token));
+        router.push("/admin/dashboard");
+      } else {
+        throw new Error();
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(setIsLoading(false));
+    }
   };
 
   return (

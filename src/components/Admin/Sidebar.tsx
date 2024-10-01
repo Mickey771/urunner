@@ -4,11 +4,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { CiSettings } from "react-icons/ci";
-import { IoPower, IoPowerOutline } from "react-icons/io5";
+import { IoPowerOutline } from "react-icons/io5";
+import { useDispatch } from "react-redux";
+import { logout } from "../../../redux/reducers/adminSlice";
 
 const Sidebar = () => {
   const [currentPath, setCurrentPathPath] = useState("");
+
   const pathname = usePathname();
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setCurrentPathPath(pathname.split("/")[2]);
@@ -87,7 +91,10 @@ const Sidebar = () => {
               </p>
             </div>
           </Link>
-          <button className="flex items-center gap-6 hover:opacity-40 ">
+          <button
+            onClick={() => dispatch(logout())}
+            className="flex items-center gap-6 hover:opacity-40 "
+          >
             <span
               className={`inline-flex border-r-[4px] border-transparent  rounded-[10px] h-[50px] w-2 `}
             ></span>

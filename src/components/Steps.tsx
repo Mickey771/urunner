@@ -100,7 +100,7 @@ export const CommunityDetailsStepThree = () => {
       </div>
       <div className="grid grid-cols-4 gap-4 mt-4">
         {Array.from({ length: 12 }, (_, index) => (
-          <span>
+          <span key={index}>
             <Image src={"/book.png"} width={168} height={184} alt="book" />
           </span>
         ))}

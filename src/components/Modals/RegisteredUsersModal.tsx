@@ -43,7 +43,7 @@ const RegisteredUsersModal: React.FC<ModalProps> = ({ modal }) => {
 
           <div className="grid grid-cols-3  mt-4 gap-4">
             {Array.from({ length: 12 }, (_, index) => (
-              <div className="flex items-center gap-2">
+              <div key={index} className="flex items-center gap-2">
                 <span className="inline-flex h-12 w-12">
                   <Image src={"/guy.png"} height={48} width={48} alt="person" />
                 </span>

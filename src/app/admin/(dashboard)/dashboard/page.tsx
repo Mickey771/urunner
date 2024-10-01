@@ -1,15 +1,21 @@
+"use client";
 import AnalyticsCard from "@/components/Admin/AnalyticsCard";
 import CommunityPost from "@/components/Admin/CommunityPost";
 import PartnershipOffer from "@/components/Admin/PartnershipOffer";
 import UpcomingEvent from "@/components/Admin/UpcomingEvent";
+import { useEvents } from "@/hooks/useEvents";
 import { headers } from "@/utils/adminData";
-import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { HiOutlineChevronRight } from "react-icons/hi2";
 import { RiPulseFill } from "react-icons/ri";
 
 const Page = () => {
+  const { isLoading, error, events } = useEvents() as {
+    isLoading: boolean;
+    error: any;
+    events: Events[];
+  };
+
   return (
     <div className="py-6 px-5">
       <div className="flex justify-end w-full max-w-admin mx-auto">
@@ -33,9 +39,11 @@ const Page = () => {
           Upcoming Events
         </h2>
         <div className="flex py-7 w-full overflow-x-auto max-w-admin gap-[30px] ">
-          {Array.from({ length: 5 }, (_, index) => (
-            <UpcomingEvent key={index} />
-          ))}
+          {isLoading ? (
+            <p>Loading...x</p>
+          ) : (
+            events.map((item, index) => <UpcomingEvent key={index} {...item} />)
+          )}
         </div>
       </div>
 

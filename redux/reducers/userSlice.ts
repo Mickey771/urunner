@@ -5,6 +5,7 @@ interface InitialState {
   isLoading: boolean;
   isModal: boolean;
   modalMessage: string;
+  events: Events[];
 }
 
 const initialState: InitialState = {
@@ -12,6 +13,7 @@ const initialState: InitialState = {
   isLoading: false,
   isModal: false,
   modalMessage: "",
+  events: [],
 };
 
 const userSlice = createSlice({
@@ -31,6 +33,9 @@ const userSlice = createSlice({
       state.isModal = action.payload.open;
       state.modalMessage = action.payload.message;
     },
+    setEvents: (state, action: PayloadAction<Events[]>) => {
+      state.events = action.payload;
+    },
   },
 });
 
@@ -38,5 +43,6 @@ export const {
   setCommunityModalStep,
   setIsLoading,
   setModal,
+  setEvents,
 } = userSlice.actions;
 export default userSlice.reducer;
