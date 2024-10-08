@@ -7,26 +7,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../../redux/store";
 
-interface Event {
-  _id: string;
-  title: string;
-  description: string;
-  date: string | number | Date;
-  link: string;
-  location: string;
-  image: string;
-}
-
 const Page = () => {
-  const [event, setEvent] = useState<Event>();
+  const [event, setEvent] = useState<Events>();
   const { id } = useParams();
 
   const { events } = useSelector((store: RootState) => store.user);
 
-  console.log("events", events);
-
   useEffect(() => {
-    setEvent(events.find((e) => e._id === id) as Event);
+    setEvent(events.find((e) => e._id === id) as Events);
     console.log("event", event);
   }, [id, events]);
 
@@ -63,11 +51,11 @@ const Page = () => {
           <br />
         </span>
         <span className="text-[#1b1b1b] text-xs md:text-base font-normal font-['Poppins']">
-          {event?.description}
+          {event?.write_up}
         </span>
       </p>
 
-      <h3 className="h-8 text-[#202224] text-base md:text-xl lg:text-2xl font-bold font-['Nunito Sans'] mt-[28px]">
+      {/* <h3 className="h-8 text-[#202224] text-base md:text-xl lg:text-2xl font-bold font-['Nunito Sans'] mt-[28px]">
         Registered Attendees
       </h3>
       <div className="flex items-center gap-3 mt-[14px]">
@@ -87,13 +75,13 @@ const Page = () => {
             14+
           </p>
         </span>
-      </div>
+      </div> */}
 
       <a
         href={event?.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="w-full md:w-[200px] h-12 mt-[60px] px-[30px] py-3 bg-[#007aff] rounded-[10px] shadow-inner justify-center items-center gap-2.5 inline-flex"
+        className="w-full md:w-[200px] h-12 mt-[30px] px-[30px] py-3 bg-[#007aff] rounded-[10px] shadow-inner justify-center items-center gap-2.5 inline-flex"
       >
         <p className="text-center text-white text-base md:text-xl font-semibold font-['Urbanist'] leading-normal">
           Register Now

@@ -1,7 +1,16 @@
+import Link from "next/link";
 import React from "react";
 import { MdOutlineCheck } from "react-icons/md";
+import { useDispatch } from "react-redux";
+import { setSelectedOffer } from "../../../redux/reducers/adminSlice";
 
-const PartnershipOffer = () => {
+const PartnershipOffer: React.FC<PartnershipOfferProps> = ({
+  name,
+  end_date,
+  price,
+  _id,
+}) => {
+  const dispatch = useDispatch();
   return (
     <div className="w-[568px] h-[139px] bg-white rounded justify-start items-start inline-flex">
       <div className="w-1.5 self-stretch justify-start items-start gap-2.5 flex">
@@ -17,27 +26,27 @@ const PartnershipOffer = () => {
           <div className="self-stretch h-[47px] flex-col justify-start items-start gap-1 flex">
             <div className="self-stretch">
               <span className="text-[#101828] text-base font-semibold font-['Inter'] leading-normal">
-                Offer from Timo Agency{" "}
+                {name}{" "}
               </span>
               <span className="text-[#0d5dba] text-base font-semibold font-['Inter'] leading-normal">
-                ($2,000)
+                ({price})
               </span>
             </div>
             <div className="self-stretch text-[#475267] text-sm font-normal font-['Inter'] leading-tight">
-              EXP date: 09/08/24
+              EXP date: {end_date}
             </div>
           </div>
-          <div className="self-stretch justify-start items-center gap-2 inline-flex">
-            <div className="flex-col justify-start items-start inline-flex">
-              <div className="px-4 py-2 bg-[#0d5dba] rounded-lg flex-col justify-center items-center gap-2.5 flex">
-                <div className="justify-center items-center gap-2 inline-flex">
-                  <div className="text-center text-white text-sm font-semibold font-['Inter'] leading-tight">
-                    View Offer
-                  </div>
-                </div>
-              </div>
+          <Link
+            href={"/admin/offers"}
+            onClick={() => dispatch(setSelectedOffer(_id))}
+            className="self-stretch justify-start items-center gap-2 inline-flex"
+          >
+            <div className="px-4 py-2 bg-[#0d5dba] rounded-lg flex-col justify-center items-center gap-2.5 flex">
+              <span className="text-center text-white text-sm font-semibold font-['Inter'] leading-tight">
+                View Offer
+              </span>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="self-stretch justify-start items-start gap-4 flex">
           <div className="w-[99px] h-px relative origin-top-left -rotate-90">

@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 import { HiOutlineChevronRight } from "react-icons/hi2";
 
-const UpcomingEvent: React.FC<Events> = ({ _id, title, description, date }) => {
+const UpcomingEvent: React.FC<Events> = ({ _id, title, write_up, date }) => {
   return (
     <Link
       href={`/events/${_id}`}
@@ -27,7 +27,7 @@ const UpcomingEvent: React.FC<Events> = ({ _id, title, description, date }) => {
         {moment(date).format("MMMM Do, h:mm A")}
       </p>
       <p className="text-[#969696] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] leading-[18px]">
-        {description}
+        {write_up}
       </p>
 
       <div className="mt-[20px] lg:mt-[46px] flex justify-between items-center">

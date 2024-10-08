@@ -91,7 +91,8 @@ const Sidebar = () => {
               </p>
             </div>
           </Link>
-          <button
+          <Link
+            href={"/admin/signin"}
             onClick={() => dispatch(logout())}
             className="flex items-center gap-6 hover:opacity-40 "
           >
@@ -108,7 +109,7 @@ const Sidebar = () => {
                 Logout
               </p>
             </div>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

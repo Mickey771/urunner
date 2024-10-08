@@ -3,21 +3,31 @@ import React from "react";
 import { CiMail, CiMoneyCheck1 } from "react-icons/ci";
 import { FiPhoneCall } from "react-icons/fi";
 import { IoMailOutline } from "react-icons/io5";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import moment from "moment";
 
 const PartnerCard = () => {
+  const { selectedPartner } = useSelector((store: RootState) => store.admin);
   return (
     <aside className="flex flex-col px-11 py-20 items-center w-full max-w-[453px] bg-white rounded-[16px]">
-      <span>
-        <Image src={"/woman.png"} width={138} height={138} alt="woman" />
+      <span className="inline-flex h-[138px] w-[138px]">
+        <Image
+          src={selectedPartner.image}
+          width={138}
+          height={138}
+          alt="woman"
+          className="rounded-full"
+        />
       </span>
       <h3 className="mt-4 mb-1 text-center text-[#1a1a1a] text-base font-bold font-['Kumbh Sans']">
-        Cody Fisher
+        {selectedPartner.name}
       </h3>
       <p className="text-center text-[#a7a7a7] text-sm font-medium font-['Kumbh Sans']">
-        Electrical company
+        {selectedPartner.company_type}
       </p>
       <p className="mt-2 mb-5 text-center text-[#252525] text-sm font-medium font-['Kumbh Sans']">
-        9/11 Hospital Road, Winnifred, Iowa, USA.
+        {selectedPartner.location}
       </p>
       <div className="flex gap-4">
         <span className="text-[#A7A7A7] bg-[#EFF3FA] p-1.5 rounded-full">
@@ -41,6 +51,8 @@ const PartnerCard = () => {
               type="email"
               name="email"
               id="email"
+              value={selectedPartner.email}
+              disabled
               className="w-full focus:outline-none"
             />
             <span>
@@ -60,6 +72,8 @@ const PartnerCard = () => {
               name="offer"
               id="offer"
               type="text"
+              value={selectedPartner.ucoin}
+              disabled
               className="w-full focus:outline-none"
             />
             <span>
@@ -80,12 +94,14 @@ const PartnerCard = () => {
               <input
                 name="offer"
                 id="offer"
-                type="date"
+                type="text"
+                disabled
+                value={moment(selectedPartner.createdAt).format("DD/MM/YYYY")}
                 className="w-full focus:outline-none"
               />
             </div>
           </div>
-          <div className="flex flex-col gap-1 w-full">
+          {/* <div className="flex flex-col gap-1 w-full">
             <label
               htmlFor="offer"
               className="text-[#101828] text-sm font-medium font-['Inter'] leading-tight"
@@ -100,7 +116,7 @@ const PartnerCard = () => {
                 className="w-full focus:outline-none"
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="flex flex-col gap-1 w-full">
@@ -115,11 +131,13 @@ const PartnerCard = () => {
               name="description"
               id="description"
               className="w-full resize-none h-[127px] focus:outline-none"
+              value={selectedPartner.description}
+              disabled
             />
           </div>
         </div>
 
-        <div>
+        {/* <div>
           <button
             type="submit"
             className="h-10 px-6 bg-[#F5F6F7] rounded-full justify-center items-center gap-2 inline-flex"
@@ -128,7 +146,7 @@ const PartnerCard = () => {
               Cancel Partnership
             </span>
           </button>
-        </div>
+        </div> */}
       </form>
     </aside>
   );

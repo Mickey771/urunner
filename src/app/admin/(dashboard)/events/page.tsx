@@ -3,6 +3,7 @@ import EventItem from "@/components/Admin/EventItem";
 import EventsCalendar from "@/components/Admin/EventsCalendar";
 import CreateEventModal from "@/components/Modals/CreateEventModal";
 import { useDisclosure } from "@/hooks/useDisclosure";
+import { useEvents } from "@/hooks/useEvents";
 import React, { useState } from "react";
 import { BsClockHistory } from "react-icons/bs";
 import { IoHomeOutline } from "react-icons/io5";
@@ -28,6 +29,11 @@ const Page = () => {
   const [selected, setSelected] = useState("All Offers");
 
   const createEventModal = useDisclosure();
+
+  const { isLoading, error, events } = useEvents();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>An error occurred:</div>;
 
   return (
     <div className="py-9  mx-auto w-full max-w-admin">

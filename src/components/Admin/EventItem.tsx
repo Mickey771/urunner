@@ -66,11 +66,11 @@ const EventItem = () => {
         </div>
       </form>
 
-      <h2 className="mt-10 h-8 text-[#202224] text-2xl font-bold font-['Nunito Sans']">
+      {/* <h2 className="mt-10 h-8 text-[#202224] text-2xl font-bold font-['Nunito Sans']">
         Registered Attendees
-      </h2>
+      </h2> */}
 
-      <div className="flex gap-4 mt-4">
+      {/* <div className="flex gap-4 mt-4">
         {Array.from({ length: 5 }, (_, index) => (
           <span key={index} className="">
             <Image
@@ -88,12 +88,12 @@ const EventItem = () => {
         >
           <span>14+</span>
         </button>
-      </div>
-      <button className="mt-[60px] h-[55px] px-6 py-4 bg-[#d0d4dd] rounded-lg flex-col justify-center items-center gap-2.5 inline-flex">
+      </div> */}
+      {/* <button className="mt-[60px] h-[55px] px-6 py-4 bg-[#d0d4dd] rounded-lg flex-col justify-center items-center gap-2.5 inline-flex">
         <span className="text-center text-[#252525] text-base font-semibold font-['Inter'] leading-normal">
           Cancel Event
         </span>
-      </button>
+      </button> */}
 
       {registeredUsersModal.isOpen && (
         <RegisteredUsersModal modal={registeredUsersModal} />

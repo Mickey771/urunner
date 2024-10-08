@@ -9,9 +9,14 @@ import {
 } from "date-fns";
 import { FaAngleLeft } from "react-icons/fa";
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import moment from "moment";
 
 const CustomCalendar: React.FC = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+
+  const { events } = useSelector((store: RootState) => store.user);
 
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
@@ -51,18 +56,28 @@ const CustomCalendar: React.FC = () => {
             {day}
           </div>
         ))}
-        {monthDays.map((day, index) => (
-          <button
-            key={index}
-            className={`
+        {monthDays.map((day, index) => {
+          // this is checking if an event is happening on a day
+          const isDay = events.find(
+            (item) =>
+              moment(item.date).format("MM-DD-YYYY") ===
+              moment(day).format("MM-DD-YYYY")
+          );
+
+          return (
+            <button
+              key={index}
+              className={`
               p-2 text-center w-11  text-base font-normal font-['Inter'] leading-normal rounded-full hover:bg-[#007AFF1A]
               ${isToday(day) ? "bg-primaryBlue text-white " : "text-[#1d2639]"}
-              ${!isSameMonth(day, currentMonth) ? "opacity-50" : ""}
+              ${!isSameMonth(day, currentMonth) ? "opacity-0" : ""}
+              ${isDay ? "text-red-500" : ""}
             `}
-          >
-            {format(day, "d")}
-          </button>
-        ))}
+            >
+              {format(day, "d")}
+            </button>
+          );
+        })}
       </div>
     </div>
   );

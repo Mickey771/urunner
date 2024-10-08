@@ -6,6 +6,8 @@ interface InitialState {
   isModal: boolean;
   modalMessage: string;
   events: Events[];
+  users: User[];
+  offers: Offer[];
 }
 
 const initialState: InitialState = {
@@ -14,6 +16,8 @@ const initialState: InitialState = {
   isModal: false,
   modalMessage: "",
   events: [],
+  users: [],
+  offers: [],
 };
 
 const userSlice = createSlice({
@@ -36,6 +40,12 @@ const userSlice = createSlice({
     setEvents: (state, action: PayloadAction<Events[]>) => {
       state.events = action.payload;
     },
+    setUsers: (state, action: PayloadAction<User[]>) => {
+      state.users = action.payload;
+    },
+    setOffers: (state, action: PayloadAction<Offer[]>) => {
+      state.offers = action.payload;
+    },
   },
 });
 
@@ -44,5 +54,7 @@ export const {
   setIsLoading,
   setModal,
   setEvents,
+  setUsers,
+  setOffers,
 } = userSlice.actions;
 export default userSlice.reducer;

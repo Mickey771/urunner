@@ -45,9 +45,9 @@ const Navbar = () => {
         >
           <URunner />
         </Link>
-        {path !== "community" && (
+        {
           <div
-            className={`md:relative absolute h-fit top-[100%] md:flex-row flex-col w-full md:w-fit md:py-0 py-6 bg-white left-0 flex items-center gap-10 md:gap-[20px] lg:gap-[58px] ${
+            className={`md:relative z-[9999] absolute h-fit top-[100%] md:flex-row flex-col w-full md:w-fit md:py-0 py-6 bg-white left-0 flex items-center gap-10 md:gap-[20px] lg:gap-[58px] ${
               isMenu
                 ? "translate-y-0 opacity-100"
                 : " zr:translate-y-[-120%] md:translate-y-0 zr:opacity-0 md:opacity-100"
@@ -68,7 +68,7 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-        )}
+        }
         <div className="flex items-center gap-2">
           {path === "community" && (
             <Link

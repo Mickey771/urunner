@@ -1,11 +1,26 @@
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
+import moment from "moment";
+import { useFetchAdmin } from "@/hooks/useFetchAdmin";
 
 const PartnerForm = () => {
+  const { selectedOffer } = useSelector((store: RootState) => store.admin);
+  const { acceptOffer } = useFetchAdmin() as {
+    isLoading: boolean;
+    error: any;
+    events: Events[];
+    users: User[];
+    offers: Offer[];
+    isOffersLoading: boolean;
+    acceptOffer: (id: string) => void;
+  };
+
   return (
     <aside className="bg-white rounded-[8px] w-full py-6 px-12">
       <h2 className="text-[#191b1c] pb-5 border-b border-[#E5E7E8] text-lg font-medium font-['Public Sans'] leading-normal">
-        Partner with us
+        Offer
       </h2>
 
       <form action="" className="mt-6 flex flex-col gap-4">
@@ -14,59 +29,31 @@ const PartnerForm = () => {
             className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
             htmlFor="company"
           >
-            Company Name
+            Name
           </label>
           <input
             type="text"
             id="company"
             name="company"
+            value={selectedOffer?.name}
+            disabled
             className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
           />
         </div>
-
-        <div className="flex gap-4">
-          <div className="w-full flex flex-col gap-1.5">
-            <label
-              className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
-              htmlFor="image"
-            >
-              Image
-            </label>
-            <input
-              type="text"
-              id="image"
-              name="image"
-              className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
-            />
-          </div>
-          <div className="w-full flex flex-col gap-1.5">
-            <label
-              className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
-              htmlFor="type"
-            >
-              Company type
-            </label>
-            <input
-              type="text"
-              id="type"
-              name="type"
-              className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
-            />
-          </div>
-        </div>
-
         <div className="flex gap-4">
           <div className="w-full flex flex-col gap-1.5">
             <label
               className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
               htmlFor="email"
             >
-              Email Address
+              Partners
             </label>
             <input
               type="email"
               id="email"
               name="email"
+              disabled
+              value={selectedOffer?.partners}
               className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
             />
           </div>
@@ -75,12 +62,33 @@ const PartnerForm = () => {
               className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
               htmlFor="contact"
             >
-              Contact Information
+              Pieces
             </label>
             <input
               type="text"
               id="contact"
               name="contact"
+              value={selectedOffer?.pieces}
+              disabled
+              className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
+            />
+          </div>
+        </div>
+
+        <div className="flex gap-4">
+          <div className="w-full flex flex-col gap-1.5">
+            <label
+              className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
+              htmlFor="type"
+            >
+              Price
+            </label>
+            <input
+              type="text"
+              id="type"
+              name="type"
+              value={selectedOffer?.price}
+              disabled
               className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
             />
           </div>
@@ -91,17 +99,19 @@ const PartnerForm = () => {
             className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
             htmlFor="location"
           >
-            Location
+            Status
           </label>
           <input
             type="text"
             id="location"
             name="location"
+            value={selectedOffer?.status}
+            disabled
             className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
           />
         </div>
 
-        <div className="w-full flex flex-col gap-1.5">
+        {/* <div className="w-full flex flex-col gap-1.5">
           <label
             className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
             htmlFor="description"
@@ -113,7 +123,7 @@ const PartnerForm = () => {
             name="description"
             className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px] resize-none h-[190px]"
           ></textarea>
-        </div>
+        </div> */}
 
         <div className="flex gap-4">
           <div className="w-full flex flex-col gap-1.5">
@@ -124,9 +134,11 @@ const PartnerForm = () => {
               Offer Date
             </label>
             <input
-              type="date"
+              type="text"
               id="date"
               name="date"
+              value={moment(selectedOffer?.date).format("DD/MM/YYYY")}
+              disabled
               className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
             />
           </div>
@@ -138,13 +150,15 @@ const PartnerForm = () => {
               Expiry Date
             </label>
             <input
-              type="date"
+              type="text"
               id="expiry"
               name="expiry"
+              value={moment(selectedOffer?.end_date).format("DD/MM/YYYY")}
+              disabled
               className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
             />
           </div>
-          <div className="w-full flex flex-col gap-1.5">
+          {/* <div className="w-full flex flex-col gap-1.5">
             <label
               className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
               htmlFor="offer"
@@ -157,21 +171,23 @@ const PartnerForm = () => {
               name="offer"
               className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
             />
-          </div>
+          </div> */}
         </div>
 
-        <div className="flex justify-between mt-2">
-          <button
+        <div className="flex justify-end mt-2">
+          {/* <button
             type="button"
             className="h-10 px-6 bg-[#f4f6f7] rounded-full justify-center items-center gap-2 inline-flex"
           >
             <span className="text-[#191b1c] text-sm font-semibold font-['Public Sans'] capitalize leading-10">
               Cancel
             </span>
-          </button>
+          </button> */}
           <button
-            type="submit"
-            className="h-10 px-6 bg-[#005ce7] rounded-full justify-center items-center gap-2 inline-flex"
+            type="button"
+            onClick={() => acceptOffer(selectedOffer._id)}
+            disabled={selectedOffer?.status !== "pending"}
+            className="h-10 px-6 bg-[#005ce7] disabled:opacity-30 rounded-full justify-center items-center gap-2 inline-flex"
           >
             <span className="text-white text-sm font-semibold font-['Public Sans'] capitalize leading-10">
               Accept Offer

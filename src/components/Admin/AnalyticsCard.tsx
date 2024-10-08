@@ -10,7 +10,7 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
   timeStamp,
 }) => {
   return (
-    <div className="w-full max-w-[262px] h-[161px] flex flex-col justify-between mt-6 bg-white rounded-[14px] shadow p-4">
+    <div className="w-full max-w-[262px] h-[121px] flex flex-col justify-between mt-6 bg-white rounded-[14px] shadow p-4">
       <div className="flex justify-between">
         <div className="flex flex-col gap-4">
           <h2 className="opacity-70 text-[#202224] text-base font-semibold font-['Nunito Sans']">
@@ -31,7 +31,7 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
           />
         </span>
       </div>
-      <div className="flex items-center gap-1">
+      {/* <div className="flex items-center gap-1">
         <span>
           {percentageChange < 1 ? (
             <IoIosTrendingDown color="#F93C65" />
@@ -50,7 +50,7 @@ const AnalyticsCard: React.FC<AnalyticsCardProps> = ({
         <span className="text-[#606060] text-base font-semibold font-['Nunito Sans']">
           {percentageChange < 1 ? "Down" : "Up"} from {timeStamp}
         </span>
-      </div>
+      </div> */}
     </div>
   );
 };

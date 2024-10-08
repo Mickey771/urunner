@@ -1,33 +1,75 @@
+import moment from "moment";
 import React from "react";
 import { MdOutlineCheck } from "react-icons/md";
+import { setSelectedOffer } from "../../../redux/reducers/adminSlice";
+import { useDispatch } from "react-redux";
 
-const OfferCard = () => {
+const OfferCard: React.FC<Offer> = ({ _id, name, end_date, price, status }) => {
+  const dispatch = useDispatch();
+  const toggleSelectedOffer = (_id: string) => {
+    dispatch(setSelectedOffer(_id));
+  };
   return (
-    <div className="w-[390px] h-[66px] bg-white rounded justify-start items-start inline-flex">
+    <button
+      onClick={() => toggleSelectedOffer(_id)}
+      className="min-w-[290px] h-[66px] bg-white rounded justify-start items-start inline-flex"
+    >
       <div className="w-1.5 self-stretch justify-start items-start gap-2.5 flex">
-        <div className="grow shrink basis-0 self-stretch bg-[#037f2d]" />
+        <div
+          className={`grow shrink basis-0 self-stretch  rounded-l-[4px] ${
+            status === "pending"
+              ? "bg-[#0D5EBA]"
+              : status === "completed"
+              ? "bg-[#04802E]"
+              : "bg-[#CB1A14]"
+          } `}
+        />
       </div>
-      <div className="grow shrink basis-0 h-[66px] px-4 py-3 rounded border-r border-t border-b border-[#e4e7ec] justify-start items-start gap-3 flex">
-        <div className="w-6 h-6 p-1.5 bg-[#e7f6ec] rounded-lg border border-[#b5e3c4] justify-center items-center flex">
-          <div className=" relative flex-col justify-start items-start flex p-[2px] bg-[#04802E] rounded-full">
+      <div className="grow h-[66px] px-4 py-3 rounded border-r border-t border-b border-[#e4e7ec] justify-start items-start gap-3 flex">
+        <div
+          className={`w-6 h-6 p-1.5 bg-[#e7f6ec] rounded-lg border  justify-center items-center flex ${
+            status === "pending"
+              ? "bg-[#E3EFFC] border-[#C6DDF7]"
+              : status === "completed"
+              ? "bg-[#E7F6EC] border-[#b5e3c4]"
+              : "bg-[#FBEAE9] border-[#F2BCBA]"
+          } `}
+        >
+          <div
+            className={`relative flex-col justify-start items-start flex p-[2px]  rounded-full ${
+              status === "pending"
+                ? "bg-[#0D5EBA]"
+                : status === "completed"
+                ? "bg-[#04802E]"
+                : "bg-[#CB1A14]"
+            }  `}
+          >
             <MdOutlineCheck color="white" size={10} />
           </div>
         </div>
-        <div className="grow shrink basis-0 self-stretch flex-col justify-start items-start gap-0.5 inline-flex">
-          <div className="self-stretch">
-            <span className="text-[#101828] text-sm font-semibold font-['Inter'] leading-tight">
-              Offer from Timo Agency{" "}
+        <div className=" flex-col justify-start items-start gap-0.5 flex">
+          <p className="">
+            <span className="text-[#101828] text-sm font-semibold font-['Inter'] ">
+              {name}{" "}
             </span>
-            <span className="text-[#037f2d] text-sm font-semibold font-['Inter'] leading-tight">
-              ($2000)
+            <span
+              className={` text-sm font-semibold font-['Inter'] ${
+                status === "pending"
+                  ? "text-[#0D5EBA]"
+                  : status === "completed"
+                  ? "text-[#04802E]"
+                  : "text-[#CB1A14]"
+              } `}
+            >
+              (${price})
             </span>
-          </div>
-          <div className="self-stretch text-[#475267] text-sm font-normal font-['Inter'] leading-tight">
-            EXP date: 07/06/25
-          </div>
+          </p>
+          <span className=" text-[#475267] text-sm font-normal font-['Inter'] ">
+            EXP date: {moment(end_date).format("DD/MM/YYYY")}
+          </span>
         </div>
       </div>
-    </div>
+    </button>
   );
 };
 

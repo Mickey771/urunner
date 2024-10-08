@@ -73,7 +73,7 @@ export default function RootLayout({
                     {item.title}
                   </h3>
                   <p className="zr:hidden lg:flex opacity-60 text-xs font-semibold font-['Nunito Sans'] leading-relaxed">
-                    {item.description}
+                    {item.write_up}
                   </p>
                   <p className="zr:hidden lg:flex opacity-60 text-xs font-semibold font-['Nunito Sans'] leading-relaxed">
                     {new Date(item.date).toLocaleDateString()}

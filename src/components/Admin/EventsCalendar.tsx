@@ -3,6 +3,8 @@ import CustomCalendar from "../CustomCalendar";
 import UpcomingEvent from "./UpcomingEvent";
 import Image from "next/image";
 import { HiOutlineChevronRight } from "react-icons/hi2";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 const EventsCalendar = () => {
   return (
