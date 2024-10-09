@@ -12,16 +12,41 @@ import {
   setUser,
 } from "../../../../../redux/reducers/adminSlice";
 
+interface Errors {
+  email: string;
+  password: string;
+}
+
 const Page = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPassword, setIsPassword] = useState(false);
+  const [errors, setErrors] = useState<Errors>({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
 
   const router = useRouter();
   const dispatch = useDispatch();
 
+  const validateForm = () => {
+    let newErrors = {} as Errors;
+    if (!email.trim()) {
+      newErrors.email = "Name is required";
+    }
+    if (!password) {
+      newErrors.password = "Password is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setError("");
+    if (!validateForm()) return;
 
     if (!email || !password) return;
     dispatch(setIsLoading(true));
@@ -47,7 +72,22 @@ const Page = () => {
         throw new Error();
       }
     } catch (error) {
-      console.log(error);
+      console.error("Registration failed:", error);
+      // Handle error (e.g., show error message)
+      if (axios.isAxiosError(error)) {
+        setError(
+          error.response?.data?.message ||
+            error.response?.data?.errors[0]?.msg ||
+            "An error occurred during registration"
+        );
+        console.log(
+          "There was an error: ",
+          error.response?.data?.message || error.response?.data?.errors
+        );
+      } else {
+        setError("An unexpected error occurred");
+        console.log("There was an unexpected error: ", error);
+      }
     } finally {
       dispatch(setIsLoading(false));
     }
@@ -82,6 +122,9 @@ const Page = () => {
             placeholder="Email"
           />
         </label>
+        {errors.email && (
+          <div className="text-red-400 text-xs md:text-sm">{errors.email}</div>
+        )}
         <label
           htmlFor="password"
           className="px-4 py-[18px] flex items-center gap-2 border border-[#007AFF80] rounded-md"
@@ -98,6 +141,7 @@ const Page = () => {
             className="h-full focus:outline-none w-full bg-transparent"
             placeholder="Password"
           />
+
           <span
             onClick={() => setIsPassword(!isPassword)}
             className="text-primaryBlue text-sm cursor-pointer"
@@ -105,6 +149,14 @@ const Page = () => {
             {!isPassword ? "Show" : "Hide"}
           </span>
         </label>
+        {errors.password && (
+          <div className="text-red-400 text-xs md:text-sm">
+            {errors.password}
+          </div>
+        )}
+        {error && (
+          <div className="text-red-400 text-xs md:text-sm">{error}</div>
+        )}
         <button
           type="submit"
           className="h-[55px] px-6 py-4 bg-[#007aff] text-white hover:text-primaryBlue hover:bg-transparent hover:border hover:border-primaryBlue rounded-lg flex-col justify-center items-center gap-2.5 inline-flex"

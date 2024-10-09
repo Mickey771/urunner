@@ -87,7 +87,9 @@ const Page = () => {
           ) : events.length > 0 ? (
             events
               .filter((item) => moment(item.date).isAfter(Date.now()))
-              .map((item, index) => <UpcomingEvent key={index} {...item} />)
+              .map((item, index) => (
+                <UpcomingEvent isAdmin={true} key={index} {...item} />
+              ))
           ) : (
             <p>No upcoming events</p>
           )}

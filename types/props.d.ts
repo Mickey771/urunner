@@ -82,6 +82,17 @@ interface Events {
   image: string;
 }
 
+interface UpcomingEventProp {
+  _id: string;
+  title: string;
+  write_up: string;
+  date: string | number | Date;
+  link: string;
+  location: string;
+  image: string;
+  isAdmin: boolean | null;
+}
+
 interface User {
   _id: string;
   email: string;

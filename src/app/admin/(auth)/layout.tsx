@@ -3,13 +3,20 @@ import Loader from "@/components/Loader";
 import Image from "next/image";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../redux/store";
+import { useRouter } from "next/navigation";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isLoading } = useSelector((store: RootState) => store.admin);
+  const { isLoading, token } = useSelector((store: RootState) => store.admin);
+
+  const router = useRouter();
+
+  if (token) {
+    router.push("/admin/dashboard");
+  }
 
   return (
     <main className="flex">

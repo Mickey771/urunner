@@ -9,7 +9,7 @@ import { setSelectedOffer } from "../../../../redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
 import OffersLoader from "@/components/OffersLoader";
 
-const Page = () => {
+const page = () => {
   const { offers, isOffersLoading } = useEvents() as {
     offers: Offer[];
     isOffersLoading: boolean;
@@ -39,14 +39,22 @@ const Page = () => {
             Designer Dresses - Pick from trendy Designer Dress.
           </p>
 
-          <button className="w-[156px] mt-[30px] h-11 bg-[#ff8743] rounded-[11px]">
-            <span className="text-white text-sm font-bold font-['Nunito Sans'] leading-7 tracking-wide">
-              Get Started
-            </span>
-          </button>
+          <div className="mt-[30px]">
+            <a
+              href="#offers"
+              className="w-[156px] p-4  h-11 bg-[#ff8743] rounded-[11px]"
+            >
+              <span className="text-white text-sm font-bold font-['Nunito Sans'] leading-7 tracking-wide">
+                Get Started
+              </span>
+            </a>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 gap-y-14  ">
+        <div
+          id="offers"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 gap-y-14  "
+        >
           {isOffersLoading ? (
             <OffersLoader />
           ) : offers.length > 0 ? (
@@ -105,4 +113,4 @@ const Page = () => {
   );
 };
 
-export default Page;
+export default page;

@@ -23,6 +23,14 @@ interface FormData {
   location: string;
 }
 
+interface Errors {
+  fullName: string;
+  email: string;
+  password: string;
+  image: string;
+  location: string;
+}
+
 const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -32,9 +40,39 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
     location: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [errors, setErrors] = useState<Errors>({
+    fullName: "",
+    email: "",
+    password: "",
+    image: "",
+    location: "",
+  });
   const [error, setError] = useState("");
 
   const dispatch = useDispatch();
+
+  const validateForm = () => {
+    let newErrors = {} as Errors;
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Name is required";
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (formData.password.length < 8) {
+      newErrors.password = "Password should be greater than 8 characters";
+    }
+    if (!formData.image) {
+      newErrors.image = "Image is required";
+    }
+    if (!formData.location.trim()) {
+      newErrors.location = "Location is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, files } = e.target;
@@ -46,12 +84,13 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!validateForm()) return;
     setIsLoading(true);
     setError("");
 
     const { fullName, email, password, image, location } = formData;
 
-    console.log("image", image);
+    // console.log("image", image);
 
     const formDataToSend = new FormData();
     formDataToSend.append("fullName", fullName);
@@ -87,9 +126,13 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
       if (axios.isAxiosError(error)) {
         setError(
           error.response?.data?.message ||
+            error.response?.data?.errors[0]?.msg ||
             "An error occurred during registration"
         );
-        console.log("There was an error: ", error.response?.data?.message);
+        console.log(
+          "There was an error: ",
+          error.response?.data?.message || error.response?.data?.errors
+        );
       } else {
         setError("An unexpected error occurred");
         console.log("There was an unexpected error: ", error);
@@ -136,6 +179,11 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
               className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               placeholder="Enter your full name"
             />
+            {errors.fullName && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.fullName}
+              </div>
+            )}
           </label>
           <label htmlFor="email" className="flex flex-col gap-1.5 w-full">
             <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
@@ -150,6 +198,11 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
               className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               placeholder="Enter your email"
             />
+            {errors.email && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.email}
+              </div>
+            )}
           </label>
           <label htmlFor="password" className="flex flex-col gap-1.5 w-full">
             <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
@@ -164,6 +217,11 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
               className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               placeholder="Enter your password"
             />
+            {errors.password && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.password}
+              </div>
+            )}
           </label>
           <div className="grid grid-cols-2 gap-4">
             <label htmlFor="image" className="flex flex-col gap-1.5 w-full">
@@ -177,6 +235,11 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
                 onChange={handleChange}
                 className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               />
+              {errors.image && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.image}
+                </div>
+              )}
             </label>
             <label htmlFor="location" className="flex flex-col gap-1.5">
               <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
@@ -191,8 +254,16 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
                 className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
                 placeholder="Country and state of residence"
               />
+              {errors.location && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.location}
+                </div>
+              )}
             </label>
           </div>
+          {error && (
+            <div className="text-red-400 text-xs md:text-sm">{error}</div>
+          )}
           <div className="flex justify-between mt-6">
             <button
               type="button"

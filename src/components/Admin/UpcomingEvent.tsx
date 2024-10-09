@@ -3,15 +3,28 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HiOutlineChevronRight } from "react-icons/hi2";
+import { useDispatch } from "react-redux";
+import { setSelectedevent } from "../../../redux/reducers/adminSlice";
 
-const UpcomingEvent: React.FC<Events> = ({ _id, title, write_up, date }) => {
+const UpcomingEvent: React.FC<UpcomingEventProp> = ({
+  _id,
+  title,
+  image,
+  write_up,
+  date,
+  isAdmin,
+}) => {
+  const dispatch = useDispatch();
   return (
     <Link
-      href={`/events/${_id}`}
+      href={isAdmin ? "/admin/events" : `/events/${_id}`}
+      onClick={() => {
+        if (isAdmin) dispatch(setSelectedevent(_id));
+      }}
       className="flex flex-col w-full min-w-[266px] lg:min-w-[344px] max-w-[344px] rounded-[6px] shadow-[7px_10px_40px_0px_rgba(0,0,0,0.10)] p-[15px]"
     >
       <Image
-        src={`/mumbai.png`}
+        src={"/man1.png"}
         width={314}
         height={173}
         alt="adult"

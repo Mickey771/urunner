@@ -19,6 +19,16 @@ interface FormData {
   ucoin: number;
 }
 
+interface Errors {
+  name: string;
+  image: string;
+  email: string;
+  contact: string;
+  location: string;
+  product: string;
+  ucoin: string;
+}
+
 const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
   const { isLoading, selectedOffer } = useSelector(
     (store: RootState) => store.user
@@ -33,8 +43,47 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
     product: selectedOffer._id,
     ucoin: selectedOffer.pieces,
   });
+  const [errors, setErrors] = useState<Errors>({
+    name: "",
+    image: "",
+    email: "",
+    contact: "",
+    location: "",
+    product: "",
+    ucoin: "",
+  });
+  const [error, setError] = useState("");
 
   const dispatch = useDispatch();
+
+  const validateForm = () => {
+    let newErrors = {} as Errors;
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email is invalid";
+    }
+    if (!formData.image) {
+      newErrors.image = "Image is required";
+    }
+    if (!formData.contact.trim()) {
+      newErrors.contact = "Contact is required";
+    }
+    if (!formData.location.trim()) {
+      newErrors.location = "Location is required";
+    }
+    if (!formData.product.trim()) {
+      newErrors.product = "Product is required";
+    }
+    if (!formData.ucoin) {
+      newErrors.ucoin = "Ucoin is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -53,6 +102,8 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError("");
+    if (!validateForm()) return;
     dispatch(setIsLoading(true));
 
     const data = new FormData();
@@ -76,8 +127,22 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
       // Handle successful submission (e.g., show a success message, close the modal)
       modal.close();
     } catch (error) {
-      console.error("Error submitting form:", error);
-      // Handle error (e.g., show an error message to the user)
+      console.error("Registration failed:", error);
+      // Handle error (e.g., show error message)
+      if (axios.isAxiosError(error)) {
+        setError(
+          error.response?.data?.message ||
+            error.response?.data?.errors[0]?.msg ||
+            "An error occurred during registration"
+        );
+        console.log(
+          "There was an error: ",
+          error.response?.data?.message || error.response?.data?.errors
+        );
+      } else {
+        setError("An unexpected error occurred");
+        console.log("There was an unexpected error: ", error);
+      }
     } finally {
       dispatch(setIsLoading(false));
     }
@@ -120,6 +185,11 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
               className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               placeholder="Add company name"
             />
+            {errors.name && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.name}
+              </div>
+            )}
           </label>
 
           <div className="grid grid-cols-2 gap-4 w-full">
@@ -134,6 +204,11 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
                 onChange={handleChange}
                 className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               />
+              {errors.image && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.image}
+                </div>
+              )}
             </label>
             <label htmlFor="product" className="flex flex-col gap-1.5 ">
               <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
@@ -147,6 +222,11 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
                 disabled
                 className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               />
+              {errors.product && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.product}
+                </div>
+              )}
             </label>
           </div>
 
@@ -164,6 +244,11 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
                 className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
                 placeholder="Add company email"
               />
+              {errors.email && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.email}
+                </div>
+              )}
             </label>
             <label htmlFor="contact" className="flex flex-col gap-1.5 w-full">
               <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
@@ -178,6 +263,11 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
                 className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
                 placeholder="Add contact number"
               />
+              {errors.contact && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.contact}
+                </div>
+              )}
             </label>
           </div>
 
@@ -194,22 +284,34 @@ const PartnershipModal: React.FC<ModalProps> = ({ modal }) => {
               className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               placeholder="Must include country and state of residence"
             />
+            {errors.location && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.location}
+              </div>
+            )}
           </label>
 
-          <label htmlFor="contact" className="flex flex-col gap-1.5 w-full">
+          <label htmlFor="ucoin" className="flex flex-col gap-1.5 w-full">
             <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
               Ucoin
             </span>
             <input
-              id="contact"
+              id="ucoin"
               type="tel"
-              name="contact"
+              name="ucoin"
               value={selectedOffer.pieces}
               disabled
               className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
             />
+            {errors.ucoin && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.ucoin}
+              </div>
+            )}
           </label>
-
+          {error && (
+            <div className="text-red-400 text-xs md:text-sm">{error}</div>
+          )}
           <div className="flex justify-between mt-6">
             <button
               type="button"
