@@ -9,7 +9,7 @@ import { setSelectedOffer } from "../../../../redux/reducers/userSlice";
 import { useDispatch } from "react-redux";
 import OffersLoader from "@/components/OffersLoader";
 
-const page = () => {
+const Page = () => {
   const { offers, isOffersLoading } = useEvents() as {
     offers: Offer[];
     isOffersLoading: boolean;
@@ -113,4 +113,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
