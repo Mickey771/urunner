@@ -9,6 +9,11 @@ interface InitialState {
   offers: Offer[];
   selectedPartner: Partner;
   partners: Partner[];
+  selectedEvent: Events;
+  events: Events[];
+  scroll: string;
+  user: AdminUser;
+  dayEvents: Events[];
 }
 
 const initialState: InitialState = {
@@ -42,6 +47,24 @@ const initialState: InitialState = {
     ucoin: 0,
   },
   partners: [],
+  selectedEvent: {
+    _id: "",
+    title: "",
+    write_up: "",
+    date: "",
+    link: "",
+    location: "",
+    image: "",
+  },
+  events: [],
+  scroll: "",
+  user: {
+    id: "",
+    fullName: "",
+    image: "",
+    email: "",
+  },
+  dayEvents: [],
 };
 
 const userSlice = createSlice({
@@ -78,6 +101,37 @@ const userSlice = createSlice({
       ) as Partner;
       state.selectedPartner = partner;
     },
+    setEvents: (state, action) => {
+      state.events = action.payload;
+    },
+    setSelectedevent: (state, action) => {
+      const event = state.events.find(
+        (event) => event._id === action.payload
+      ) as Events;
+      state.selectedEvent = event;
+    },
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
+    triggerScroll: (state) => {
+      state.scroll = `${Date.now()}`;
+    },
+    setDayEvents: (state, action) => {
+      state.dayEvents = action.payload;
+    },
+    // setCurrentIndex: (state, action) => {
+    //   const { events, currentIndex } = state;
+    //   let newIndex = 0;
+    //   if (action.payload === "next") {
+    //     newIndex = currentIndex === events.length - 1 ? 0 : currentIndex + 1;
+    //   } else if (action.payload === "prev") {
+    //     newIndex = currentIndex === 0 ? events.length - 1 : currentIndex - 1;
+    //   } else if (action.payload === "reset") {
+    //     newIndex = 0;
+    //   }
+    //   state.currentIndex = newIndex;
+    //   state.selectedEvent = events[newIndex];
+    // },
     logout: (state) => {
       state.isAuth = false;
       state.token = "";
@@ -95,5 +149,10 @@ export const {
   setOffers,
   setPartners,
   setSelectedPartner,
+  setEvents,
+  setSelectedevent,
+  triggerScroll,
+  setUser,
+  setDayEvents,
 } = userSlice.actions;
 export default userSlice.reducer;

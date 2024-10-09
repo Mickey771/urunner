@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { setEvents, setUsers } from "../../redux/reducers/userSlice";
+import { setUsers } from "../../redux/reducers/userSlice";
 import { useEffect } from "react";
 import { RootState } from "../../redux/store";
 import { useSelector } from "react-redux";
 import {
+  setEvents,
   setIsLoading,
   setOffers,
   setPartners,

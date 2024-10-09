@@ -28,8 +28,8 @@ const Page = () => {
     );
 
   return (
-    <section className="flex w-full max-w-admin mx-auto">
-      <table className="w-full">
+    <section className="flex w-full max-w-admin mx-auto ">
+      <table className="w-full pb-0">
         <thead>
           <tr className="grid grid-cols-5">
             <td className="text-[#414141] px-2 py-4 text-xs font-bold font-['Kumbh Sans']">

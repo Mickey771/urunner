@@ -7,7 +7,7 @@ const UpdatePassword = () => {
   return (
     <div className="bg-white w-full h-fit rounded-[12px] border border-[#EDEDF2] p-6">
       <h2 className="text-[#1a1a21] text-xl font-semibold font-['Inter'] leading-normal">
-        Update Password
+        Update Profile Picture
       </h2>
       <p className="text-[#8b94a6] text-base font-normal font-['Inter'] leading-normal">
         Enter your current password to make update

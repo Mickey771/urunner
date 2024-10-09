@@ -120,3 +120,21 @@ interface PartnershipOfferProps {
   price: number;
   end_date: string;
 }
+
+interface AdminUser {
+  id: string;
+  fullName: string;
+  image: string;
+  email: string;
+}
+
+interface EventCarouselProps {
+  event: Events;
+  goToNextEvent: () => void;
+  goToPrevEvent: () => void;
+  events: Events[];
+}
+
+interface CustomCalendarProps {
+  setCurrentIndex: (index: number) => void;
+}

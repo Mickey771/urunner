@@ -8,6 +8,7 @@ interface InitialState {
   events: Events[];
   users: User[];
   offers: Offer[];
+  selectedOffer: Offer;
 }
 
 const initialState: InitialState = {
@@ -18,6 +19,17 @@ const initialState: InitialState = {
   events: [],
   users: [],
   offers: [],
+  selectedOffer: {
+    _id: "",
+    name: "",
+    price: 0,
+    pieces: 0,
+    partners: 0,
+    date: "",
+    end_date: "",
+    image: "",
+    status: "",
+  },
 };
 
 const userSlice = createSlice({
@@ -46,6 +58,9 @@ const userSlice = createSlice({
     setOffers: (state, action: PayloadAction<Offer[]>) => {
       state.offers = action.payload;
     },
+    setSelectedOffer: (state, action: PayloadAction<Offer>) => {
+      state.selectedOffer = action.payload;
+    },
   },
 });
 
@@ -56,5 +71,6 @@ export const {
   setEvents,
   setUsers,
   setOffers,
+  setSelectedOffer,
 } = userSlice.actions;
 export default userSlice.reducer;

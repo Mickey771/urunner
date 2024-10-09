@@ -1,9 +1,13 @@
 import React from "react";
 import { BiSolidFilePng } from "react-icons/bi";
-import { CiMail } from "react-icons/ci";
+import { CiLock, CiMail } from "react-icons/ci";
 import { LuUser } from "react-icons/lu";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 const ProfileSettings = () => {
+  const { user } = useSelector((store: RootState) => store.admin);
+
   return (
     <div className="bg-white w-full rounded-[12px] border border-[#EDEDF2] p-6">
       <h2 className="text-[#1a1a21] text-xl font-semibold font-['Inter'] leading-normal">
@@ -30,6 +34,7 @@ const ProfileSettings = () => {
               className=""
               id="name"
               name="name"
+              value={user.fullName}
               placeholder="John Doe"
             />
           </div>
@@ -47,9 +52,10 @@ const ProfileSettings = () => {
             </span>
             <input
               type="email"
-              className=""
+              className="w-full"
               id="email"
               name="email"
+              value={user.email}
               placeholder="user@mail.com"
             />
           </div>
@@ -72,6 +78,27 @@ const ProfileSettings = () => {
               id="picture"
               name="picture"
               placeholder="John Doe"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label
+            htmlFor="email"
+            className="text-[#101828] text-sm font-medium font-['Inter'] leading-tight"
+          >
+            New Password
+          </label>
+          <div className="flex gap-2 items-center p-4 border border-[#D0D5DD] rounded-md">
+            <span>
+              <CiLock />
+            </span>
+            <input
+              type="email"
+              className=""
+              id="email"
+              name="email"
+              placeholder="Enter New Password"
             />
           </div>
         </div>

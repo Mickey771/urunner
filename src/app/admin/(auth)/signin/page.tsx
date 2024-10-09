@@ -9,6 +9,7 @@ import {
   setIsAuth,
   setIsLoading,
   setToken,
+  setUser,
 } from "../../../../../redux/reducers/adminSlice";
 
 const Page = () => {
@@ -36,9 +37,11 @@ const Page = () => {
       );
 
       if (response.status === 200) {
-        const { token } = response.data;
+        const { token, data } = response.data;
+
         dispatch(setIsAuth(true));
         dispatch(setToken(token));
+        dispatch(setUser(data));
         router.push("/admin/dashboard");
       } else {
         throw new Error();

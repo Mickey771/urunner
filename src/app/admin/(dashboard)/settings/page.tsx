@@ -1,9 +1,7 @@
+"use client";
 import ProfileSettings from "@/components/Admin/ProfileSettings";
 import UpdatePassword from "@/components/Admin/UpdatePassword";
 import React from "react";
-import { BiSolidFilePng } from "react-icons/bi";
-import { CiMail } from "react-icons/ci";
-import { LuUser } from "react-icons/lu";
 
 const Page = () => {
   return (
@@ -15,7 +13,7 @@ const Page = () => {
         Control your profile setup and integrations
       </p>
 
-      <div className="mt-6 flex gap-5">
+      <div className="mt-6 flex gap-5 ">
         <ProfileSettings />
         <UpdatePassword />
       </div>

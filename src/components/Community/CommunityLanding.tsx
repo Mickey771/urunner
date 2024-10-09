@@ -6,11 +6,11 @@ import Image from "next/image";
 import { useDisclosure } from "@/hooks/useDisclosure";
 import PartnershipModal from "../Modals/PartnershipModal";
 import JoinCommunityModal from "../Modals/JoinCommunityModal";
+import Link from "next/link";
 
 const partners = ["garmin", "fitbit", "strava", "oura"];
 
 const CommunityLanding = () => {
-  const partnershipModal = useDisclosure();
   const joinCommunityModal = useDisclosure();
 
   return (
@@ -113,8 +113,8 @@ const CommunityLanding = () => {
             />
           </span>
         </div>
-        <button
-          onClick={partnershipModal.open}
+        <Link
+          href={"/offers"}
           className="mt-20 flex gap-[5px] md:gap-[10px] items-center bg-primaryBlue p-[9px] md:p-[20px] lg:p-[25px] pr-[8px] md:pr-[12px] lg:pr-[15px] rounded-[10px] lg:rounded-[20px]"
         >
           <p className="text-white text-[18px] md:text-[24px] lg:text-[32px] font-medium font-['Urbanist'] lg:leading-[43.12px]">
@@ -123,9 +123,8 @@ const CommunityLanding = () => {
           <span className="text-[15px] md:text-[18px] lg:text-[30px]">
             <LuMoveRight className="rotate-[-45deg]" color="white" />
           </span>
-        </button>
+        </Link>
       </section>
-      {partnershipModal.isOpen && <PartnershipModal modal={partnershipModal} />}
       {joinCommunityModal.isOpen && (
         <JoinCommunityModal modal={joinCommunityModal} />
       )}

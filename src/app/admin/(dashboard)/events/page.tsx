@@ -1,6 +1,7 @@
 "use client";
 import EventItem from "@/components/Admin/EventItem";
 import EventsCalendar from "@/components/Admin/EventsCalendar";
+import EventDetailsLoader from "@/components/EventDetailsLoader";
 import CreateEventModal from "@/components/Modals/CreateEventModal";
 import { useDisclosure } from "@/hooks/useDisclosure";
 import { useEvents } from "@/hooks/useEvents";
@@ -15,14 +16,14 @@ const filters = [
     text: "All Events",
     icon: IoHomeOutline,
   },
-  {
-    text: "Upcoming Events",
-    icon: BsClockHistory,
-  },
-  {
-    text: "Cancelled Events",
-    icon: LiaTimesCircle,
-  },
+  // {
+  //   text: "Upcoming Events",
+  //   icon: BsClockHistory,
+  // },
+  // {
+  //   text: "Cancelled Events",
+  //   icon: LiaTimesCircle,
+  // },
 ];
 
 const Page = () => {
@@ -32,7 +33,6 @@ const Page = () => {
 
   const { isLoading, error, events } = useEvents();
 
-  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>An error occurred:</div>;
 
   return (
@@ -94,7 +94,7 @@ const Page = () => {
                 <span
                   className={`text-center text-xs font-medium font-['Inter'] leading-[17.40px] `}
                 >
-                  0
+                  {events.length}
                 </span>
               </div>
             </button>
@@ -103,7 +103,7 @@ const Page = () => {
       </div>
       <div className="flex mt-6 gap-[26px]">
         <EventsCalendar />
-        <EventItem />
+        {isLoading ? <EventDetailsLoader /> : <EventItem />}
       </div>
 
       {createEventModal && <CreateEventModal modal={createEventModal} />}

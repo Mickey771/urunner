@@ -5,8 +5,11 @@ import { FiMenu } from "react-icons/fi";
 import { IoSearchOutline } from "react-icons/io5";
 import { useDispatch } from "react-redux";
 import { toggleSidebar } from "../../../redux/reducers/adminSlice";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../redux/store";
 
 const Topbar = () => {
+  const { user } = useSelector((store: RootState) => store.admin);
   const dispatch = useDispatch();
   return (
     <div className="sticky top-0 left-0 w-full z-20 px-5 py-4 bg-white ">
@@ -32,23 +35,24 @@ const Topbar = () => {
           </label>
         </div>
         <div className="flex items-center gap-6">
-          <span>
+          {/* <span>
             <FaRegBell size={25} />
-          </span>
+          </span> */}
           <div className="w-[125px] flex gap-4 items-center">
-            <span className="inline-flex w-full rounded-full max-w-[50px]">
+            <span className="inline-flex w-full rounded-full h-[50px] max-w-[50px]">
               <Image
-                src={"/girl.png"}
+                src={user.image}
                 height={0}
                 width={0}
                 sizes="100vw"
                 style={{ width: "100%", height: "100%" }}
                 alt="logo"
+                className="rounded-full "
               />
             </span>
             <div className=" flex flex-col gap-1">
               <p className="text-neutral-700 text-sm font-bold font-['Nunito Sans']">
-                Moni Roy
+                {user.fullName}
               </p>
               <p className="text-[#565656] text-xs font-semibold font-['Nunito Sans']">
                 Admin
