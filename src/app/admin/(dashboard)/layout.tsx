@@ -6,13 +6,14 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../../redux/store";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Loader from "@/components/Loader";
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { isSidebar, isAuth, scroll } = useSelector(
+  const { isSidebar, isLoading, isAuth, scroll } = useSelector(
     (store: RootState) => store.admin
   );
 
@@ -30,6 +31,7 @@ export default function RootLayout({
       <div className="bg-[#F5F6FA] w-full overflow-y-scroll">
         <Topbar />
         {children}
+        {isLoading && <Loader />}
       </div>
     </main>
   );

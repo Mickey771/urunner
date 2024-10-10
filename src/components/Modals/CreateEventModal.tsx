@@ -18,10 +18,27 @@ interface FormData {
   end_date: string;
 }
 
+interface Errors {
+  title: string;
+  image: string;
+  link: string;
+  write_up: string;
+  date: string;
+  end_date: string;
+}
+
 const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
   const [formData, setFormData] = useState<FormData>({
     title: "",
     image: null,
+    link: "",
+    write_up: "",
+    date: "",
+    end_date: "",
+  });
+  const [errors, setErrors] = useState<Errors>({
+    title: "",
+    image: "",
     link: "",
     write_up: "",
     date: "",
@@ -34,6 +51,30 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
   );
 
   const dispatch = useDispatch();
+
+  const validateForm = () => {
+    let newErrors = {} as Errors;
+    if (!formData.title.trim()) {
+      newErrors.title = "Title is required";
+    }
+    if (!formData.image) {
+      newErrors.image = "Image is required";
+    }
+    if (!formData.link.trim()) {
+      newErrors.link = "Link is required";
+    }
+    if (!formData.write_up.trim()) {
+      newErrors.write_up = "Description is required";
+    }
+    if (!formData.date.trim()) {
+      newErrors.date = "Start Date is required";
+    }
+    if (!formData.end_date) {
+      newErrors.end_date = "Expiry date is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -53,6 +94,7 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError("");
+    if (!validateForm()) return;
 
     dispatch(setIsLoading(true));
 
@@ -79,18 +121,39 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
         modal.close();
         // dispatch(setEvents([...events,{}]))
       } else {
-        console.log("there was an error");
+        console.error("Registration failed:", error);
+        // Handle error (e.g., show error message)
+        if (axios.isAxiosError(error)) {
+          setError(
+            error.response?.data?.message ||
+              error.response?.data?.errors[0]?.msg ||
+              "An error occurred during registration"
+          );
+          console.log(
+            "There was an error: ",
+            error.response?.data?.message || error.response?.data?.errors
+          );
+        } else {
+          setError("An unexpected error occurred");
+          console.log("There was an unexpected error: ", error);
+        }
       }
       // Handle successful event creation (e.g., show success message, refresh events list)
     } catch (error) {
-      console.error("Event creation failed:", error);
+      // Handle error (e.g., show error message)
       if (axios.isAxiosError(error)) {
         setError(
           error.response?.data?.message ||
-            "An error occurred while creating the event"
+            error.response?.data?.errors[0]?.msg ||
+            "An error occurred during registration"
+        );
+        console.log(
+          "There was an error: ",
+          error.response?.data?.message || error.response?.data?.errors
         );
       } else {
         setError("An unexpected error occurred");
+        console.log("There was an unexpected error: ", error);
       }
     } finally {
       dispatch(setIsLoading(false));
@@ -137,6 +200,11 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
               className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               placeholder="Add event name"
             />
+            {errors.title && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.title}
+              </div>
+            )}
           </label>
           <div className="flex gap-4">
             <label htmlFor="image" className="w-full flex flex-col gap-1.5">
@@ -150,6 +218,11 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
                 onChange={handleChange}
                 className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               />
+              {errors.image && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.image}
+                </div>
+              )}
             </label>
             <label htmlFor="link" className="w-full flex flex-col gap-1.5">
               <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
@@ -164,6 +237,11 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
                 className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
                 placeholder="Add registration link"
               />
+              {errors.link && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.link}
+                </div>
+              )}
             </label>
           </div>
           <label htmlFor="write_up" className="flex flex-col gap-1.5 w-full">
@@ -178,6 +256,11 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
               className="h-[190px] py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight resize-none"
               placeholder="Add event description"
             />
+            {errors.write_up && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.write_up}
+              </div>
+            )}
           </label>
           <div className="flex gap-4">
             <div className="w-full flex flex-col gap-1.5">
@@ -195,6 +278,11 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
                 onChange={handleChange}
                 className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
               />
+              {errors.date && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.date}
+                </div>
+              )}
             </div>
             <div className="w-full flex flex-col gap-1.5">
               <label
@@ -211,6 +299,11 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
                 onChange={handleChange}
                 className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
               />
+              {errors.end_date && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.end_date}
+                </div>
+              )}
             </div>
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}

@@ -18,6 +18,15 @@ interface FormData {
   end_date: string;
 }
 
+interface Errors {
+  name: string;
+  price: string;
+  pieces: string;
+  image: string;
+  date: string;
+  end_date: string;
+}
+
 const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -29,10 +38,42 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const [errors, setErrors] = useState<Errors>({
+    name: "",
+    price: "",
+    pieces: "",
+    image: "",
+    date: "",
+    end_date: "",
+  });
 
   const { token, offers } = useSelector((store: RootState) => store.admin);
 
   const dispatch = useDispatch();
+
+  const validateForm = () => {
+    let newErrors = {} as Errors;
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    }
+    if (!formData.image) {
+      newErrors.image = "Image is required";
+    }
+    if (!formData.price.trim()) {
+      newErrors.price = "Price is required";
+    }
+    if (!formData.pieces.trim()) {
+      newErrors.pieces = "Pieces is required";
+    }
+    if (!formData.date.trim()) {
+      newErrors.date = "Offer Date is required";
+    }
+    if (!formData.end_date) {
+      newErrors.end_date = "Expiry date is required";
+    }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, files } = e.target;
@@ -44,8 +85,9 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(setIsLoading(true));
     setError("");
+    if (!validateForm()) return;
+    dispatch(setIsLoading(true));
 
     const data = new FormData();
     Object.entries(formData).forEach(([key, value]) => {
@@ -74,19 +116,23 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
             { ...response.data.data, status: "pending", partners: 0 },
           ])
         );
-      } else {
-        console.log("there was and error", response.status);
       }
-      // Handle successful offer creation (e.g., show success message, refresh offers list)
     } catch (error) {
-      console.error("Offer creation failed:", error);
+      console.error("Registration failed:", error);
+      // Handle error (e.g., show error message)
       if (axios.isAxiosError(error)) {
         setError(
           error.response?.data?.message ||
-            "An error occurred while creating the offer"
+            error.response?.data?.errors[0]?.msg ||
+            "An error occurred during registration"
+        );
+        console.log(
+          "There was an error: ",
+          error.response?.data?.message || error.response?.data?.errors
         );
       } else {
         setError("An unexpected error occurred");
+        console.log("There was an unexpected error: ", error);
       }
     } finally {
       dispatch(setIsLoading(false));
@@ -133,6 +179,11 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
               className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
               placeholder="Add offer name"
             />
+            {errors.name && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.name}
+              </div>
+            )}
           </label>
           <div className="flex gap-5 w-full">
             <label htmlFor="price" className="flex w-full flex-col gap-1.5">
@@ -148,6 +199,11 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
                 className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
                 placeholder="Add offer price"
               />
+              {errors.price && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.price}
+                </div>
+              )}
             </label>
             <label htmlFor="pieces" className="flex w-full flex-col gap-1.5">
               <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
@@ -162,6 +218,11 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
                 className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
                 placeholder="Add offer pieces"
               />
+              {errors.pieces && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.pieces}
+                </div>
+              )}
             </label>
           </div>
           <label htmlFor="image" className="flex w-full flex-col gap-1.5">
@@ -175,6 +236,11 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
               onChange={handleChange}
               className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
             />
+            {errors.image && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.image}
+              </div>
+            )}
           </label>
           <div className="flex gap-4">
             <div className="w-full flex flex-col gap-1.5">
@@ -192,6 +258,11 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
                 onChange={handleChange}
                 className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
               />
+              {errors.date && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.date}
+                </div>
+              )}
             </div>
             <div className="w-full flex flex-col gap-1.5">
               <label
@@ -208,6 +279,11 @@ const CreateOfferModal: React.FC<ModalProps> = ({ modal }) => {
                 onChange={handleChange}
                 className="text-[#4a5154] text-sm font-normal font-['Public Sans'] leading-tight py-2.5 px-4 border border-[#E5E7E8] rounded-[4px]"
               />
+              {errors.end_date && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.end_date}
+                </div>
+              )}
             </div>
           </div>
           {error && <p className="text-red-500 text-sm">{error}</p>}
