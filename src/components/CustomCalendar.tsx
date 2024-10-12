@@ -6,7 +6,10 @@ import {
   format,
   isSameMonth,
   isToday,
+  addDays,
+  getDay,
 } from "date-fns";
+
 import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import moment from "moment";
 import { useFetchAdmin } from "@/hooks/useFetchAdmin";
@@ -27,13 +30,19 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ setCurrentIndex }) => {
   //   events: Events[];
   // };
 
+  console.log("start of month", startOfMonth(new Date()));
+
   const { events } = useSelector((store: RootState) => store.admin);
 
   const dispatch = useDispatch();
 
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
-  const monthDays = eachDayOfInterval({ start: monthStart, end: monthEnd });
+
+  const startDate = addDays(monthStart, -getDay(monthStart));
+  const endDate = addDays(monthEnd, 6 - getDay(monthEnd));
+
+  const monthDays = eachDayOfInterval({ start: startDate, end: endDate });
 
   const prevMonth = () => {
     setCurrentMonth(
@@ -86,7 +95,6 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ setCurrentIndex }) => {
           </div>
         ))}
         {monthDays.map((day, index) => {
-          // this is checking if an event is happening on a day
           const dayEvents = events.filter(
             (item) =>
               moment(item.date).format("MM-DD-YYYY") ===
@@ -97,20 +105,26 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ setCurrentIndex }) => {
             <button
               key={index}
               onClick={() =>
+                isSameMonth(day, currentMonth) &&
                 handleClick(moment(day).format("MM-DD-YYYY"), dayEvents)
               }
               className={`
               p-2 text-center w-11 flex flex-col gap-[2px] items-center text-base font-normal font-['Inter'] leading-normal rounded-full hover:bg-[#007AFF1A]
-              ${!isSameMonth(day, currentMonth) ? "opacity-0" : ""}
-              ${isToday(day) ? "bg-primaryBlue text-white " : "text-[#1d2639]"}
+              ${
+                !isSameMonth(day, currentMonth)
+                  ? "opacity-25 text-gray-400"
+                  : ""
+              }
+              ${isToday(day) ? "bg-primaryBlue text-white" : "text-[#1d2639]"}
               ${
                 selected === moment(day).format("MM-DD-YYYY") &&
                 "bg-[#007bff38]"
               }
             `}
+              disabled={!isSameMonth(day, currentMonth)}
             >
               {format(day, "d")}
-              {dayEvents.length > 0 && (
+              {dayEvents.length > 0 && isSameMonth(day, currentMonth) && (
                 <span className="inline-flex h-2 w-2 bg-primaryBlue rounded-full"></span>
               )}
             </button>

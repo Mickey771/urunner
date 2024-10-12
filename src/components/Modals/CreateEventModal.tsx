@@ -125,6 +125,15 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
         const newEvent = response.data.data;
         dispatch(setEvents([...events, { ...newEvent }]));
         modal.close();
+        setFormData({
+          title: "",
+          image: null,
+          link: "",
+          write_up: "",
+          date: "",
+          end_date: "",
+          location: "",
+        });
       } else {
         console.error("Registration failed:", error);
         // Handle error (e.g., show error message)
