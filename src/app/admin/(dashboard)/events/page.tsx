@@ -10,6 +10,10 @@ import { BsClockHistory } from "react-icons/bs";
 import { IoHomeOutline } from "react-icons/io5";
 import { LiaTimesCircle } from "react-icons/lia";
 import { TbCirclePlus } from "react-icons/tb";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../../redux/store";
+import { setEvents } from "../../../../../redux/reducers/adminSlice";
+import { useFetchAdmin } from "@/hooks/useFetchAdmin";
 
 const filters = [
   {
@@ -27,11 +31,18 @@ const filters = [
 ];
 
 const Page = () => {
-  const [selected, setSelected] = useState("All Offers");
+  const [selected, setSelected] = useState("All Events");
 
   const createEventModal = useDisclosure();
 
-  const { isLoading, error, events } = useEvents();
+  const { isLoading, error } = useFetchAdmin();
+
+  const { events } = useSelector((store: RootState) => store.admin);
+
+  // console.log(events);
+  // useEffect(() => {
+  //   dispatch(setEvents(data?.data || ([] as Events[])));
+  // }, [data]);
 
   if (error) return <div>An error occurred:</div>;
 
@@ -101,7 +112,7 @@ const Page = () => {
           );
         })}
       </div>
-      <div className="flex mt-6 gap-[26px]">
+      <div className="flex mt-6 gap-[26px] mb-10">
         <EventsCalendar />
         {isLoading ? <EventDetailsLoader /> : <EventItem />}
       </div>

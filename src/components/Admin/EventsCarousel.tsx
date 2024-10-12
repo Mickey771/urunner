@@ -44,7 +44,7 @@ const EventCarousel: React.FC<EventCarouselProps> = ({
           {event?.date ? moment(event.date).format("DD MMM YYYY") : ""}
         </p>
         <p className="text-[#969696] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] leading-[18px]">
-          {event?.write_up}
+          {event?.write_up.slice(0, 40)}...
         </p>
       </div>
 

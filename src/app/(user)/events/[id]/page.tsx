@@ -6,6 +6,7 @@ import { useParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../../redux/store";
+import moment from "moment";
 
 const Page = () => {
   const [event, setEvent] = useState<Events>();
@@ -47,7 +48,7 @@ const Page = () => {
             />
           )}
         </div>
-        <p className="lg:h-[159px]">
+        <p className="lg:max-h-[159px]">
           <span className="text-[#1b1b1b] text-lg font-normal font-['Poppins']">
             <br />
           </span>
@@ -78,16 +79,27 @@ const Page = () => {
           </span>
         </div> */}
 
-        <a
-          href={event?.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="w-full md:w-[200px] h-12 mt-[30px] px-[30px] py-3 bg-[#007aff] rounded-[10px] shadow-inner justify-center items-center gap-2.5 inline-flex"
-        >
-          <p className="text-center text-white text-base md:text-xl font-semibold font-['Urbanist'] leading-normal">
-            Register Now
-          </p>
-        </a>
+        {moment(event?.date).isBefore(Date.now()) ? (
+          <button
+            disabled
+            className="w-full md:w-[200px] disabled:opacity-40 h-12 mt-[30px] px-[30px] py-3 bg-[#007aff] rounded-[10px] shadow-inner justify-center items-center gap-2.5 inline-flex"
+          >
+            <p className="text-center text-white text-base md:text-xl font-semibold font-['Urbanist'] leading-normal">
+              Event ended
+            </p>
+          </button>
+        ) : (
+          <a
+            href={event?.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full md:w-[200px] h-12 mt-[30px] px-[30px] py-3 bg-[#007aff] rounded-[10px] shadow-inner justify-center items-center gap-2.5 inline-flex"
+          >
+            <p className="text-center text-white text-base md:text-xl font-semibold font-['Urbanist'] leading-normal">
+              Register Now
+            </p>
+          </a>
+        )}
       </article>
     </div>
   );

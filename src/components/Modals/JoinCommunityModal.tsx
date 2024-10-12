@@ -7,6 +7,7 @@ import { style } from "./config";
 import Loader from "../Loader";
 import { useDispatch } from "react-redux";
 import { setModal } from "../../../redux/reducers/userSlice";
+import { useRouter } from "next/navigation";
 
 interface ModalProps {
   modal: {
@@ -50,6 +51,7 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
   const [error, setError] = useState("");
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const validateForm = () => {
     let newErrors = {} as Errors;
@@ -119,6 +121,9 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
           message: "You have successfully joined our community",
         })
       );
+      setTimeout(() => {
+        router.push("/community/home");
+      }, 2000);
       // Handle successful registration (e.g., show success message, redirect)
     } catch (error) {
       console.error("Registration failed:", error);

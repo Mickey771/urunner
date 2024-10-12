@@ -7,16 +7,22 @@ import RegisteredUsersModal from "../Modals/RegisteredUsersModal";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import moment from "moment";
+import DeleteConfirmationModal from "../Modals/DeleteConfirmationModal";
+import { setIsDeleteEventModal } from "../../../redux/reducers/adminSlice";
+import { useDispatch } from "react-redux";
 
 const EventItem = () => {
   const { selectedEvent } = useSelector((store: RootState) => store.admin);
   const registeredUsersModal = useDisclosure();
+  const deleteConfirmationModal = useDisclosure();
+
+  const dispatch = useDispatch();
 
   if (!selectedEvent?._id) return <p>No event selected</p>;
 
   return (
-    <section className="relative w-full">
-      <aside className="w-full sticky left-0 top-[110px]">
+    <section className="relative w-full ">
+      <aside className="w-full sticky left-0 top-[110px] ">
         <div className="flex justify-between items-center">
           <p className="w-[241px]  opacity-60 text-[#202224] text-base font-semibold font-['Nunito Sans']">
             {moment(selectedEvent?.date).format("DD MMM YYYY")}{" "}
@@ -37,7 +43,7 @@ const EventItem = () => {
             className="object-cover rounded-[15px]"
           />
         </span>
-        <p className="h-[159px]">
+        <p className="max-h-[159px]">
           <span className="text-[#1b1b1b] text-lg font-normal font-['Poppins']">
             <br />
           </span>
@@ -94,11 +100,17 @@ const EventItem = () => {
             <span>14+</span>
           </button>
         </div> */}
-        {/* <button className="mt-[60px] h-[55px] px-6 py-4 bg-[#d0d4dd] rounded-lg flex-col justify-center items-center gap-2.5 inline-flex">
-          <span className="text-center text-[#252525] text-base font-semibold font-['Inter'] leading-normal">
-            Cancel Event
+
+        {/* THIS MODAL WAS ADDED IN src/components/Admin/EventsCalendar.tsx */}
+        <button
+          type="button"
+          onClick={() => dispatch(setIsDeleteEventModal(true))}
+          className="mt-[60px] h-[55px] px-6 py-4 bg-[#D50000] rounded-lg flex-col justify-center items-center gap-2.5 inline-flex"
+        >
+          <span className="text-center text-[#fff] text-base font-semibold font-['Inter'] leading-normal">
+            Delete Event
           </span>
-        </button> */}
+        </button>
 
         {registeredUsersModal.isOpen && (
           <RegisteredUsersModal modal={registeredUsersModal} />

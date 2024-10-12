@@ -16,6 +16,7 @@ interface FormData {
   write_up: string;
   date: string;
   end_date: string;
+  location: string;
 }
 
 interface Errors {
@@ -25,6 +26,7 @@ interface Errors {
   write_up: string;
   date: string;
   end_date: string;
+  location: string;
 }
 
 const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
@@ -35,6 +37,7 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
     write_up: "",
     date: "",
     end_date: "",
+    location: "",
   });
   const [errors, setErrors] = useState<Errors>({
     title: "",
@@ -43,6 +46,7 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
     write_up: "",
     date: "",
     end_date: "",
+    location: "",
   });
   const [error, setError] = useState("");
 
@@ -118,8 +122,9 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
       );
       if (response.status === 200) {
         console.log("Event created successfully:", response.data);
+        const newEvent = response.data.data;
+        dispatch(setEvents([...events, { ...newEvent }]));
         modal.close();
-        // dispatch(setEvents([...events,{}]))
       } else {
         console.error("Registration failed:", error);
         // Handle error (e.g., show error message)
@@ -244,6 +249,25 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
               )}
             </label>
           </div>
+          <label htmlFor="location" className="w-full flex flex-col gap-1.5">
+            <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
+              Location
+            </span>
+            <input
+              id="location"
+              name="location"
+              type="text"
+              value={formData.location}
+              onChange={handleChange}
+              className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
+              placeholder="Add location"
+            />
+            {errors.link && (
+              <div className="text-red-400 text-xs md:text-sm">
+                {errors.location}
+              </div>
+            )}
+          </label>
           <label htmlFor="write_up" className="flex flex-col gap-1.5 w-full">
             <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
               Description

@@ -4,9 +4,12 @@ import EventCarousel from "./EventsCarousel";
 import { useEventCarousel } from "@/hooks/useEventCarousel";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
+import DeleteConfirmationModal from "../Modals/DeleteConfirmationModal";
 
 const EventsCalendar = () => {
-  const { dayEvents } = useSelector((store: RootState) => store.admin);
+  const { dayEvents, isDeleteEventModal } = useSelector(
+    (store: RootState) => store.admin
+  );
 
   const {
     currentEvent: event,
@@ -30,6 +33,10 @@ const EventsCalendar = () => {
         goToPrevEvent={goToPrevEvent}
         events={dayEvents}
       />
+
+      {isDeleteEventModal && (
+        <DeleteConfirmationModal setCurrentIndex={setCurrentIndex} />
+      )}
     </div>
   );
 };

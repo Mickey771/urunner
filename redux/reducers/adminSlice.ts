@@ -14,6 +14,7 @@ interface InitialState {
   scroll: string;
   user: AdminUser;
   dayEvents: Events[];
+  isDeleteEventModal: boolean;
 }
 
 const initialState: InitialState = {
@@ -65,6 +66,7 @@ const initialState: InitialState = {
     email: "",
   },
   dayEvents: [],
+  isDeleteEventModal: false,
 };
 
 const userSlice = createSlice({
@@ -119,6 +121,9 @@ const userSlice = createSlice({
     setDayEvents: (state, action) => {
       state.dayEvents = action.payload;
     },
+    setIsDeleteEventModal: (state, action) => {
+      state.isDeleteEventModal = action.payload;
+    },
     // setCurrentIndex: (state, action) => {
     //   const { events, currentIndex } = state;
     //   let newIndex = 0;
@@ -154,5 +159,6 @@ export const {
   triggerScroll,
   setUser,
   setDayEvents,
+  setIsDeleteEventModal,
 } = userSlice.actions;
 export default userSlice.reducer;

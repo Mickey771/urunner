@@ -42,13 +42,13 @@ export default function RootLayout({
                     "py-3 md:py-6 bg-primaryBlue text-white rounded-[14px] border-[0.3px] border-[#B9B9B9]"
                   } px-1 md:px-2 lg:px-6 py-3 md:py-6 lg:py-4 text-[#202224] flex gap-3`}
                 >
-                  <div className="w-[38px] h-[38px]">
+                  <div className="w-[38px] min-h-[38px]">
                     <Image
-                      src={"/mumbai.png"} // Replace with actual image from API if available
+                      src={item.image} // Replace with actual image from API if available
                       height={38}
                       width={38}
                       alt="event img"
-                      className="rounded-full md:min-w-[38px]"
+                      className="rounded-full md:min-w-[38px] min-h-[38px]"
                     />
                   </div>
 
@@ -57,7 +57,7 @@ export default function RootLayout({
                       {item.title}
                     </h3>
                     <p className="zr:hidden lg:flex opacity-60 text-xs font-semibold font-['Nunito Sans'] leading-relaxed">
-                      {item.write_up}
+                      {item.write_up.slice(0, 40)}...
                     </p>
                     <p className="zr:hidden lg:flex opacity-60 text-xs font-semibold font-['Nunito Sans'] leading-relaxed">
                       {new Date(item.date).toLocaleDateString()}

@@ -23,11 +23,11 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({ setCurrentIndex }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selected, setSelected] = useState<string>();
 
-  const { events } = useFetchAdmin() as {
-    events: Events[];
-  };
+  // const { events } = useFetchAdmin() as {
+  //   events: Events[];
+  // };
 
-  // const { events } = useSelector((store: RootState) => store.admin);
+  const { events } = useSelector((store: RootState) => store.admin);
 
   const dispatch = useDispatch();
 

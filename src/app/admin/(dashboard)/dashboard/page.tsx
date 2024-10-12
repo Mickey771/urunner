@@ -34,6 +34,10 @@ const Page = () => {
 
   console.log(offers);
 
+  const upcomingEvents = events.filter((item) =>
+    moment(item.date).isAfter(Date.now())
+  );
+
   return (
     <div className="py-6 px-5">
       {/* <div className="flex justify-end w-full max-w-admin mx-auto">
@@ -84,12 +88,10 @@ const Page = () => {
         <div className="flex py-7 w-full overflow-x-auto max-w-admin gap-[30px] ">
           {isLoading ? (
             <UpcomingEventsLoader />
-          ) : events.length > 0 ? (
-            events
-              .filter((item) => moment(item.date).isAfter(Date.now()))
-              .map((item, index) => (
-                <UpcomingEvent isAdmin={true} key={index} {...item} />
-              ))
+          ) : upcomingEvents.length > 0 ? (
+            upcomingEvents.map((item, index) => (
+              <UpcomingEvent isAdmin={true} key={index} {...item} />
+            ))
           ) : (
             <p>No upcoming events</p>
           )}

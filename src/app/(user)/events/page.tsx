@@ -5,16 +5,12 @@ import { RootState } from "../../../../redux/store";
 import { useEffect, useState } from "react";
 
 const Page = () => {
-  const [event, setEvent] = useState<Events>();
-
   const router = useRouter();
   const { events } = useSelector((store: RootState) => store.user);
 
   useEffect(() => {
-    setEvent(events[0] as Events);
+    events.length > 0 && router.push(`/events/${events[0]?._id}`);
   }, [events]);
-
-  return router.push(`/events/${event?._id}`);
 };
 
 export default Page;

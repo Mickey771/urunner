@@ -43,7 +43,7 @@ const Community = () => {
   };
 
   return (
-    <section className="w-full max-w-[834px]  rounded-[14px] border-[#B9B9B933] border-[0.3px] bg-white">
+    <section className="w-full max-w-[834px]  rounded-[14px] border-[#B9B9B933] h-fit border-[0.3px] bg-white">
       <div className="flex items-center justify-between py-5 px-7 border-b-[0.87px] border-[#E0E0E0]">
         <h1 className="text-[#202224] flex items-center gap-4 text-xl font-bold font-['Nunito Sans']">
           {/* <span>
