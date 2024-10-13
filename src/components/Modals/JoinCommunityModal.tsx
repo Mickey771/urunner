@@ -19,34 +19,22 @@ interface ModalProps {
 interface FormData {
   fullName: string;
   email: string;
-  password: string;
-  image: File | null;
-  location: string;
 }
 
 interface Errors {
   fullName: string;
   email: string;
-  password: string;
-  image: string;
-  location: string;
 }
 
 const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
     email: "",
-    password: "",
-    image: null,
-    location: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [errors, setErrors] = useState<Errors>({
     fullName: "",
     email: "",
-    password: "",
-    image: "",
-    location: "",
   });
   const [error, setError] = useState("");
 
@@ -62,15 +50,6 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "Email is invalid";
-    }
-    if (formData.password.length < 8) {
-      newErrors.password = "Password should be greater than 8 characters";
-    }
-    if (!formData.image) {
-      newErrors.image = "Image is required";
-    }
-    if (!formData.location.trim()) {
-      newErrors.location = "Location is required";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -90,18 +69,13 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
     setIsLoading(true);
     setError("");
 
-    const { fullName, email, password, image, location } = formData;
+    const { fullName, email } = formData;
 
     // console.log("image", image);
 
     const formDataToSend = new FormData();
     formDataToSend.append("fullName", fullName);
     formDataToSend.append("email", email);
-    formDataToSend.append("password", password);
-    formDataToSend.append("location", location);
-    if (image) {
-      formDataToSend.append("image", image);
-    }
 
     try {
       const response = await axios.post(
@@ -157,7 +131,7 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
     >
       <Box
         sx={style}
-        className="bg-white md:max-w-[680px] max-w-[370px] w-full md:w-[680px] rounded-[15px]"
+        className="bg-white md:max-w-[680px] h-[400px] max-w-[370px] w-full md:w-[680px] rounded-[15px]"
       >
         <div className="flex py-3 px-6 items-center justify-between shadow-[0px_-1px_0px_0px_#E5E7E8_inset]">
           <h2 className="text-[#191b1c] text-lg font-medium font-['Public Sans'] leading-normal">
@@ -209,67 +183,11 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
               </div>
             )}
           </label>
-          <label htmlFor="password" className="flex flex-col gap-1.5 w-full">
-            <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
-              Password
-            </span>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
-              placeholder="Enter your password"
-            />
-            {errors.password && (
-              <div className="text-red-400 text-xs md:text-sm">
-                {errors.password}
-              </div>
-            )}
-          </label>
-          <div className="grid grid-cols-2 gap-4">
-            <label htmlFor="image" className="flex flex-col gap-1.5 w-full">
-              <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
-                Profile Image
-              </span>
-              <input
-                id="image"
-                name="image"
-                type="file"
-                onChange={handleChange}
-                className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
-              />
-              {errors.image && (
-                <div className="text-red-400 text-xs md:text-sm">
-                  {errors.image}
-                </div>
-              )}
-            </label>
-            <label htmlFor="location" className="flex flex-col gap-1.5">
-              <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
-                Location
-              </span>
-              <input
-                id="location"
-                name="location"
-                type="text"
-                value={formData.location}
-                onChange={handleChange}
-                className="h-12 py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
-                placeholder="Country and state of residence"
-              />
-              {errors.location && (
-                <div className="text-red-400 text-xs md:text-sm">
-                  {errors.location}
-                </div>
-              )}
-            </label>
-          </div>
+
           {error && (
             <div className="text-red-400 text-xs md:text-sm">{error}</div>
           )}
-          <div className="flex justify-between mt-6">
+          <div className="flex justify-between mt-16">
             <button
               type="button"
               onClick={modal.close}

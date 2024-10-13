@@ -1,10 +1,19 @@
+import { useEvents } from "@/hooks/useEvents";
 import { upcomingEvents } from "@/utils/data";
+import moment from "moment";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HiOutlineChevronRight } from "react-icons/hi";
+import EventsLoader from "../EventsLoader";
 
 const SectionFour = () => {
+  const { isLoading, events } = useEvents() as {
+    isLoading: boolean;
+    events: Events[];
+  };
+  console.log(events);
+
   return (
     <section className="w-full max-w-max mx-auto mt-[153px] flex flex-col justify-center items-center ">
       <h1 className="text-[#202020] text-center text-[32px] md:text-[52px] lg:text-[64px] font-black font-['Urbanist'] lg:leading-[86.25px]">
@@ -14,83 +23,87 @@ const SectionFour = () => {
         Come join us at our next event
       </p>
 
-      <div className="flex lg:justify-center items-center gap-[15px] md:gap-[38px] mt-[20px] lg:mt-[52px] w-full px-6 lg:px-0 py-8  overflow-x-scroll">
-        {upcomingEvents.map((item, index) => (
-          <Link
-            href={`/events/${item.id}`}
-            key={index}
-            className="flex flex-col w-full min-w-[266px] max-w-[344px] rounded-[6px] shadow-[7px_10px_40px_0px_rgba(0,0,0,0.10)] p-[15px]"
-          >
-            <Image
-              src={`/${item.image}`}
-              width={314}
-              height={173}
-              alt="adult"
-              className="max-h-[173px] object-cover"
-            />
-            <h3 className="text-[#202224] text-[18px] md:text-[22px] lg:text-[28px] font-bold font-['Urbanist'] mt-[19px] mb-[15px]">
-              {item.heading.slice(0, 20)}
-              {item.heading.length > 20 && "..."}
-            </h3>
-            <p className="text-[#646464] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist']">
-              {item.company}
-            </p>
-            <p className="text-[#909090] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] my-2">
-              {item.time}
-            </p>
-            <p className="text-[#969696] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] leading-[18px]">
-              {item.description.slice(0, 60)}...
-            </p>
+      {isLoading ? (
+        <EventsLoader />
+      ) : (
+        <div className="flex lg:justify-center items-center gap-[15px] md:gap-[38px] mt-[20px] lg:mt-[52px] w-full px-6 lg:px-0 py-8  overflow-x-scroll">
+          {events.slice(0, 3).map((item, index) => (
+            <Link
+              href={`/events/${item._id}`}
+              key={index}
+              className="flex flex-col w-full min-w-[266px] max-w-[344px] rounded-[6px] shadow-[7px_10px_40px_0px_rgba(0,0,0,0.10)] p-[15px]"
+            >
+              <Image
+                src={item.image}
+                width={314}
+                height={173}
+                alt="adult"
+                className="max-h-[173px] object-cover"
+              />
+              <h3 className="text-[#202224] text-[18px] md:text-[22px] lg:text-[28px] font-bold font-['Urbanist'] mt-[19px] mb-[15px]">
+                {item.title.slice(0, 20)}
+                {item.title.length > 20 && "..."}
+              </h3>
+              {/* <p className="text-[#646464] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist']">
+              {item.conpany}
+            </p> */}
+              <p className="text-[#909090] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] my-2">
+                {moment(item.date).format("hh:mm, DD MMM")}
+              </p>
+              <p className="text-[#969696] text-sm md:text-base lg:text-xl font-semibold font-['Urbanist'] leading-[18px]">
+                {item.write_up.slice(0, 60)}...
+              </p>
 
-            <div className="mt-[20px] lg:mt-[46px] flex justify-between items-center">
-              <div className=" flex gap-2 items-center">
-                <span className="inline-flex w-[20px] lg:w-[34px]">
-                  <Image
-                    src={"/man1.png"}
-                    height={0}
-                    width={0}
-                    alt="man"
-                    sizes="100vw"
-                    style={{ width: "100%", height: "100%" }}
-                    className="rounded-full"
-                  />
-                </span>
-                <span className="inline-flex w-[20px] lg:w-[34px]">
-                  <Image
-                    src={"/man2.png"}
-                    height={0}
-                    width={0}
-                    alt="man"
-                    sizes="100vw"
-                    style={{ width: "100%", height: "100%" }}
-                    className="rounded-full"
-                  />
-                </span>
-                <span className="inline-flex w-[20px] lg:w-[34px]">
-                  <Image
-                    src={"/man3.png"}
-                    height={0}
-                    width={0}
-                    alt="man"
-                    sizes="100vw"
-                    style={{ width: "100%", height: "100%" }}
-                    className="rounded-full"
-                  />
-                </span>
+              <div className="mt-[20px] lg:mt-[46px] flex justify-between items-center">
+                <div className=" flex gap-2 items-center">
+                  <span className="inline-flex w-[20px] lg:w-[34px]">
+                    <Image
+                      src={"/man1.png"}
+                      height={0}
+                      width={0}
+                      alt="man"
+                      sizes="100vw"
+                      style={{ width: "100%", height: "100%" }}
+                      className="rounded-full"
+                    />
+                  </span>
+                  <span className="inline-flex w-[20px] lg:w-[34px]">
+                    <Image
+                      src={"/man2.png"}
+                      height={0}
+                      width={0}
+                      alt="man"
+                      sizes="100vw"
+                      style={{ width: "100%", height: "100%" }}
+                      className="rounded-full"
+                    />
+                  </span>
+                  <span className="inline-flex w-[20px] lg:w-[34px]">
+                    <Image
+                      src={"/man3.png"}
+                      height={0}
+                      width={0}
+                      alt="man"
+                      sizes="100vw"
+                      style={{ width: "100%", height: "100%" }}
+                      className="rounded-full"
+                    />
+                  </span>
 
-                <span className="w-full max-w-5 px-1  h-5 lg:max-w-[30px] lg:h-[30px] flex items-center justify-center border border-[#b0559b] rounded-full">
-                  <p className="text-[#b0559b] text-[10px] lg:text-[13px] font-medium font-['Circular Std']">
-                    15+
-                  </p>
+                  <span className="w-full max-w-5 px-1  h-5 lg:max-w-[30px] lg:h-[30px] flex items-center justify-center border border-[#b0559b] rounded-full">
+                    <p className="text-[#b0559b] text-[10px] lg:text-[13px] font-medium font-['Circular Std']">
+                      15+
+                    </p>
+                  </span>
+                </div>
+                <span>
+                  <HiOutlineChevronRight size={25} />
                 </span>
               </div>
-              <span>
-                <HiOutlineChevronRight size={25} />
-              </span>
-            </div>
-          </Link>
-        ))}
-      </div>
+            </Link>
+          ))}
+        </div>
+      )}
 
       <div className="bg-primaryBlue w-full mt-[300px] lg:mt-[360px] rounded-[25px] md:rounded-[35px] lg:rounded-[60px] h-[514px] flex gap-5 flex-col-reverse lg:flex-row  items-center px-[30px] md:px-[80px] lg:px-[166px] pb-[87px] lg:pb-0">
         <div className="w-full flex flex-col items-center gap-[32px] lg:gap-[61px]">

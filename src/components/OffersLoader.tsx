@@ -2,7 +2,7 @@ import React from "react";
 import ContentLoader from "react-content-loader";
 
 const OfferCardLoader = () => (
-  <div className="bg-white p-4 rounded-lg shadow-sm">
+  <div className="bg-white p-4 rounded-lg shadow-sm w-full">
     <ContentLoader
       speed={2}
       width={300}
