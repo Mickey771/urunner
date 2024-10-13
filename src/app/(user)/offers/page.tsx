@@ -26,11 +26,11 @@ const Page = () => {
           Offers
         </h1>
 
-        <div className="bg-[#4880FF] rounded-[14px] py-[50px] px-[40px] md:px-[70px] lg:px-[90px]">
+        <div className="bg-[#4880FF] rounded-[14px] pb-[50px] pt-[40px] px-[40px] md:px-[70px] lg:px-[90px]">
           {/* <p className="text-white text-sm md:text-base font-semibold font-['Nunito Sans'] leading-[30px]">
             September 12-22
           </p> */}
-          <h2 className="text-white my-2 text-2xl md:text-[37px] font-black font-['Nunito Sans'] md:leading-[48px]">
+          <h2 className="text-white my-0 text-2xl md:text-[37px] font-black font-['Nunito Sans'] md:leading-[48px]">
             Enjoy free usable
             <br />
             products with your UcCoins
@@ -42,9 +42,9 @@ const Page = () => {
           <div className="mt-[60px]">
             <a
               href="#offers"
-              className="w-[156px] p-4  h-11 text-white  bg-[#ff8743] border border-[#ff8743] hover:bg-white hover:text-[#ff8743] rounded-[11px]"
+              className="w-[156px] p-6   text-white  bg-[#ff8743] border border-[#ff8743] hover:bg-white hover:text-[#ff8743] rounded-[11px]"
             >
-              <span className="text-sm font-bold font-['Nunito Sans'] leading-7 tracking-wide">
+              <span className="text-lg font-bold font-['Nunito Sans'] leading-7 tracking-wide">
                 Get Started
               </span>
             </a>

@@ -73,19 +73,10 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
 
     // console.log("image", image);
 
-    const formDataToSend = new FormData();
-    formDataToSend.append("fullName", fullName);
-    formDataToSend.append("email", email);
-
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/users/register/`,
-        formDataToSend,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
+        { fullName, email }
       );
       console.log("Registration successful:", response.data);
       modal.close();
@@ -131,7 +122,7 @@ const JoinCommunityModal: React.FC<ModalProps> = ({ modal }) => {
     >
       <Box
         sx={style}
-        className="bg-white md:max-w-[680px] h-[400px] max-w-[370px] w-full md:w-[680px] rounded-[15px]"
+        className="bg-white md:max-w-[680px] min-h-[400px] max-w-[370px] w-full md:w-[680px] rounded-[15px]"
       >
         <div className="flex py-3 px-6 items-center justify-between shadow-[0px_-1px_0px_0px_#E5E7E8_inset]">
           <h2 className="text-[#191b1c] text-lg font-medium font-['Public Sans'] leading-normal">
