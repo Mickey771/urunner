@@ -17,6 +17,7 @@ interface FormData {
   date: string;
   end_date: string;
   location: string;
+  company: string;
 }
 
 interface Errors {
@@ -27,6 +28,7 @@ interface Errors {
   date: string;
   end_date: string;
   location: string;
+  company: string;
 }
 
 const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
@@ -38,6 +40,7 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
     date: "",
     end_date: "",
     location: "",
+    company: "",
   });
   const [errors, setErrors] = useState<Errors>({
     title: "",
@@ -47,6 +50,7 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
     date: "",
     end_date: "",
     location: "",
+    company: "",
   });
   const [error, setError] = useState("");
 
@@ -75,6 +79,12 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
     }
     if (!formData.end_date) {
       newErrors.end_date = "Expiry date is required";
+    }
+    if (!formData.location) {
+      newErrors.location = "Location is required";
+    }
+    if (!formData.company) {
+      newErrors.company = "Company is required";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -133,6 +143,7 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
           date: "",
           end_date: "",
           location: "",
+          company: "",
         });
       } else {
         console.error("Registration failed:", error);
@@ -203,7 +214,8 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
         >
           <label htmlFor="title" className="flex flex-col gap-1.5">
             <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
-              Event Title
+              Event Title{" "}
+              <span className="text-red-400 text-sm md:text-lg">*</span>
             </span>
             <input
               id="title"
@@ -221,9 +233,10 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
             )}
           </label>
           <div className="flex gap-4">
-            <label htmlFor="image" className="w-full flex flex-col gap-1.5">
+            <label htmlFor="image" className="w-1/2 flex flex-col gap-1.5">
               <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
-                Event Image
+                Event Image{" "}
+                <span className="text-red-400 text-sm md:text-lg">*</span>
               </span>
               <input
                 id="image"
@@ -258,35 +271,59 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
               )}
             </label>
           </div>
-          <label htmlFor="location" className="w-full flex flex-col gap-1.5">
-            <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
-              Location
-            </span>
-            <input
-              id="location"
-              name="location"
-              type="text"
-              value={formData.location}
-              onChange={handleChange}
-              className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
-              placeholder="Add location"
-            />
-            {errors.link && (
-              <div className="text-red-400 text-xs md:text-sm">
-                {errors.location}
-              </div>
-            )}
-          </label>
+          <div className="flex gap-4">
+            <label htmlFor="location" className="w-full flex flex-col gap-1.5">
+              <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
+                Location{" "}
+                <span className="text-red-400 text-sm md:text-lg">*</span>
+              </span>
+              <input
+                id="location"
+                name="location"
+                type="text"
+                value={formData.location}
+                onChange={handleChange}
+                className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
+                placeholder="Add location"
+              />
+              {errors.location && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.location}
+                </div>
+              )}
+            </label>
+            <label htmlFor="location" className="w-full flex flex-col gap-1.5">
+              <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
+                Company{" "}
+                <span className="text-red-400 text-sm md:text-lg">*</span>
+              </span>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                value={formData.company}
+                onChange={handleChange}
+                className="py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight"
+                placeholder="Add company"
+              />
+              {errors.company && (
+                <div className="text-red-400 text-xs md:text-sm">
+                  {errors.company}
+                </div>
+              )}
+            </label>
+          </div>
           <label htmlFor="write_up" className="flex flex-col gap-1.5 w-full">
             <span className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight">
-              Description
+              Description{" "}
+              <span className="text-red-400 text-sm md:text-lg">*</span>
             </span>
             <textarea
               id="write_up"
               name="write_up"
               value={formData.write_up}
               onChange={handleChange}
-              className="h-[190px] py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight resize-none"
+              className="max-h-[190px] py-2.5 px-4 border border-[#E5E7E8] rounded placeholder:text-[#959fa3] text-sm font-normal font-['Public Sans'] leading-tight resize-none"
               placeholder="Add event description"
             />
             {errors.write_up && (
@@ -301,7 +338,8 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
                 className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
                 htmlFor="date"
               >
-                Start Date
+                Start Date{" "}
+                <span className="text-red-400 text-sm md:text-lg">*</span>
               </label>
               <input
                 type="date"
@@ -322,7 +360,8 @@ const CreateEventModal: React.FC<ModalProps> = ({ modal }) => {
                 className="text-[#191b1c] text-sm font-normal font-['Public Sans'] leading-tight"
                 htmlFor="end_date"
               >
-                End Date
+                End Date{" "}
+                <span className="text-red-400 text-sm md:text-lg">*</span>
               </label>
               <input
                 type="date"
