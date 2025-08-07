@@ -97,6 +97,13 @@ const FAQAccordion = () => {
       <p className="w-full max-w-[1072px] mx-auto   mt-[15px] text-left text-[#202020]/80 text-base md:text-xl lg:text-2xl font-semibold font-['Urbanist'] lg:leading-loose">
         You can find additional information and FAQs on the URunner App
       </p>
+      <a
+        target="_blank"
+        href="/faq.pdf"
+        className="w-full max-w-[1072px] mx-auto text-primaryBlue  mt-[15px] text-left text-[#202020]/80 text-base md:text-xl lg:text-2xl font-semibold font-['Urbanist'] lg:leading-loose"
+      >
+        Click here to download complete FAQs
+      </a>
     </section>
   );
 };
